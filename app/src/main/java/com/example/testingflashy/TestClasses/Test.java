@@ -15,6 +15,10 @@ public class Test {
         time = _time;
     }
 
+    public String getTitle(){return title;}
+    public String getDate(){return date;}
+    public String getTime(){return time;}
+
     void AddDeck(Deck _deck){
         deckList.add(_deck);
     }
