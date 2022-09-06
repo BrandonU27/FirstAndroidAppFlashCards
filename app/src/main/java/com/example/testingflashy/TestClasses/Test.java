@@ -4,12 +4,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Test {
-    final List<Deck> deckList = new LinkedList<>();
-    final String date;
-    final String time;
+    private List<Deck> deckList = new LinkedList<>();
+    private String date;
+    private String time;
 
-    Test(String _date, String _time){
+    void ChangedDate(String _date){
         date = _date;
+    }
+
+    void ChangeTime(String _time){
         time = _time;
     }
 
