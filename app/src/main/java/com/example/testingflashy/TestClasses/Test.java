@@ -5,14 +5,13 @@ import java.util.List;
 
 public class Test {
     private List<Deck> deckList = new LinkedList<>();
+    private String title;
     private String date;
     private String time;
 
-    void ChangedDate(String _date){
+    public Test(String _title, String _date, String _time){
+        title = _title;
         date = _date;
-    }
-
-    void ChangeTime(String _time){
         time = _time;
     }
 

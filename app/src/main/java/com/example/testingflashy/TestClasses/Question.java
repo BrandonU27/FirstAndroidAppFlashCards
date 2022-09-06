@@ -7,7 +7,7 @@ public class Question {
     private Options op3;
     private Options op4;
 
-    Question(String _question, Options _op1, Options _op2, Options _op3, Options _op4){
+    public Question(String _question, Options _op1, Options _op2, Options _op3, Options _op4){
         question = _question;
         op1 = _op1;
         op2 = _op2;

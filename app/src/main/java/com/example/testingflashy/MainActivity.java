@@ -15,15 +15,17 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Test> usersTests = new ArrayList<>();
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Has all the test for the user
+        List<Test> userTests = new ArrayList<>();
+
+        // Sample data
+        Test testingTest = new Test("Example Test", "3/23/22", "3:00pm");
+        ///////////////////
 
         // Makes it so that the current data is able to be displayed on the home page
         TextView dateView = findViewById(R.id.currentDate);
