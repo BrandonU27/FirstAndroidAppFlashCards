@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.Parcel;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openTestPage(){
         Intent intent = new Intent(this, TestPage.class);
+        intent.putExtra("Test", testingTest);
         startActivity(intent);
     }
 }

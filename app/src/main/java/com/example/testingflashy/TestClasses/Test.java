@@ -2,8 +2,9 @@ package com.example.testingflashy.TestClasses;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Test {
+public class Test implements Serializable{
     private List<Deck> deckList = new LinkedList<>();
     private String title;
     private String date;
@@ -19,7 +20,4 @@ public class Test {
     public String getDate(){return date;}
     public String getTime(){return time;}
 
-    void AddDeck(Deck _deck){
-        deckList.add(_deck);
-    }
 }
