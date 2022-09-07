@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.os.Parcel;
 
 import android.view.View;
 import android.widget.Button;
@@ -21,17 +19,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Vars for the sample tests
-    private List<Test> userTests;
     private Test testingTest;
-
-    //Vars for the date textview
-    private TextView dateView;
-    private String date;
-
-    // Vars for making sample test button
-    private Button test1;
-    private String testButtonTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Has all the test for the user
-        userTests = new ArrayList<>();
+        // Vars for the sample tests
+        List<Test> userTests = new ArrayList<>();
 
         // Sample data
         testingTest = new Test("Example Test", "3/23/22", "3:00pm");
@@ -47,23 +36,20 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////
 
         // Makes it so that the current data is able to be displayed on the home page
-        dateView = findViewById(R.id.currentDate);
-        date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
+        //Vars for the date textview
+        TextView dateView = findViewById(R.id.currentDate);
+        String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
         // Getting the users tests and adding them to the total tests they have
-        test1 = (Button) findViewById(R.id.testOne);
+        // Vars for making sample test button
+        Button test1 = findViewById(R.id.testOne);
         test1.setVisibility(View.VISIBLE);
         test1.setEnabled(true);
-        testButtonTitle = testingTest.getTitle() + "|| " + testingTest.getDate() + " || " + testingTest.getTime();
+        String testButtonTitle = testingTest.getTitle() + "|| " + testingTest.getDate() + " || " + testingTest.getTime();
         test1.setText(testButtonTitle);
 
-        test1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openTestPage();
-            }
-        });
+        test1.setOnClickListener(view -> openTestPage());
     }
 
     public void openTestPage(){

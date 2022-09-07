@@ -19,5 +19,6 @@ public class Test implements Serializable{
     public String getTitle(){return title;}
     public String getDate(){return date;}
     public String getTime(){return time;}
+    public List<Deck> getDeckList(){return deckList;}
 
 }

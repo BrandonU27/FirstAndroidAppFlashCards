@@ -1,5 +1,7 @@
 package com.example.testingflashy.TestClasses;
 
+import java.security.cert.PKIXRevocationChecker;
+
 public class Question {
     private String question;
     private Options op1;
@@ -14,4 +16,8 @@ public class Question {
         op3 = _op3;
         op4 = _op4;
     }
+
+    public String getQuestion(){return question;}
+    public Options getOp1(){return op1;}
+    public Options getOp2(){return op2;}
 }
