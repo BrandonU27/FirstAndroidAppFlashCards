@@ -11,11 +11,12 @@ public class Deck {
 
     private String name;
     private String createdOn;
-    private List<Question> cardDeck = new LinkedList<>();
+    private List<Question> cardDeck;
 
     public Deck(String _name){
         name = _name;
         createdOn = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
+        cardDeck = new LinkedList<>();
     }
 
     void AddCard(Question _question){

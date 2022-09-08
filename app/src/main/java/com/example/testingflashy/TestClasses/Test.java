@@ -1,11 +1,12 @@
 package com.example.testingflashy.TestClasses;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.Serializable;
 
 public class Test implements Serializable{
-    private List<Deck> deckList = new LinkedList<>();
+    private List<Deck> deckList;
     private String title;
     private String date;
     private String time;
@@ -14,6 +15,7 @@ public class Test implements Serializable{
         title = _title;
         date = _date;
         time = _time;
+        deckList = new ArrayList<>();
     }
 
     public void addDeck(Deck _deck){

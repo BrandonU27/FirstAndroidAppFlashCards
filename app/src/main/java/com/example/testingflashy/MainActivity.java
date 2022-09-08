@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         userTests.add(new Test("Testing", "10.3.22", "3:00am"));
         userTests.add(new Test("English HW", "10.30.22", "2:00pm"));
         userTests.add(new Test("Math Alg", "10.13.22", "3:30pm"));
+
         for (Test data: userTests){
             userNames.add(data.getTitle());
         }
