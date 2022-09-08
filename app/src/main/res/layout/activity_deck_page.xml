@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Created on XX/XX/XXXX"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/deckCardCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
