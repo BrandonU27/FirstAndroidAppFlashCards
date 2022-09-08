@@ -36,6 +36,9 @@ public class TestPage extends AppCompatActivity {
     // List View
     private ListView testL;
 
+    // Selected Item in list
+    private String selected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +76,15 @@ public class TestPage extends AppCompatActivity {
         adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, deckNames);
         testL.setAdapter(adapt);
 
+        // Makes the decks in list clickable for the user to click on
+        testL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selected = deckNames.get(i);
+                toDeckPage();
+            }
+        });
+
         // Sets the image button to take people back to home
         backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> backToHome());
@@ -83,4 +95,17 @@ public class TestPage extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    // Sends the user to the deck page
+    public void toDeckPage(){
+        Intent in = new Intent(this, DeckPage.class);
+        for (Deck d : testsDecks){
+            if(selected == d.getName()){
+                in.putExtra("DECK", d);
+            }
+            in.putExtra("TEST", currentTest);
+        }
+        startActivity(in);
+    }
+
 }
