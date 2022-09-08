@@ -2,6 +2,7 @@ package com.example.testingflashy.TestClasses;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -18,11 +19,11 @@ public class Deck implements Serializable {
     public Deck(String _name){
         name = _name;
         createdOn = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
-        cardDeck = new LinkedList<>();
+        cardDeck = new ArrayList<>();
         cardCount = 0;
     }
 
-    void AddCard(Question _question){
+    public void addCard(Question _question){
         cardDeck.add(_question);
         cardCount++;
     }
@@ -30,4 +31,5 @@ public class Deck implements Serializable {
     public String getName(){return name;}
     public String getCreatedOn(){return createdOn;}
     public int getCardCount(){return cardCount;}
+    public List<Question> getCardDeck(){return cardDeck;}
 }

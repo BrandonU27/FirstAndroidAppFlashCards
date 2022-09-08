@@ -2,6 +2,7 @@ package com.example.testingflashy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
+import com.example.testingflashy.TestClasses.Options;
+import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 
 import java.text.SimpleDateFormat;
@@ -43,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         // Sample data
         userTests.add(new Test("Testing", "10.3.22", "3:00am"));
         userTests.add(new Test("English HW", "10.30.22", "2:00pm"));
-        userTests.add(new Test("Math Alg", "10.13.22", "3:30pm"));
+
+        Test sampleTes = new Test("TESTING ADDING", "12/31/20XX", "12:00pm");
+        Deck sampleDec = new Deck("Unit 1");
+
+        sampleTes.addDeck(sampleDec);
+        userTests.add(sampleTes);
 
         for (Test data: userTests){
             userNames.add(data.getTitle());

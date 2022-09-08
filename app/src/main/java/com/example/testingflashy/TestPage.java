@@ -58,11 +58,6 @@ public class TestPage extends AppCompatActivity {
         deckNames = new ArrayList<String>();
         testsDecks = currentTest.getDeckList();
 
-        // SAMPLE DATA DELETE AFTER USE
-        testsDecks.add(new Deck("Unit 1"));
-        testsDecks.add(new Deck("Unit 2"));
-        //////////////////////////////
-
         // Gets all the names of the decks and puts them into a list
         for (Deck d : testsDecks){
             deckNames.add(d.getName());

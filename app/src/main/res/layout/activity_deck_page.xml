@@ -25,54 +25,66 @@
         android:layout_height="wrap_content"
         android:text="SAMPLE NAME"
         android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/deckPageBackButton"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <TextView
         android:id="@+id/deckCreatedOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Created on XX/XX/XXXX"
+        android:text="CREATED ON:"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/deckCardCount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deckName"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
         android:id="@+id/deckCardCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cards - XX"
+        android:layout_marginTop="8dp"
+        android:text="Cards: "
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deckName"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <Button
         android:id="@+id/addCardButton"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Add Card"
-        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/deckPageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deckCardCount"
+        app:layout_constraintVertical_bias="0.615" />
+
+    <ListView
+        android:id="@+id/deckPageView"
+        android:layout_width="416dp"
+        android:layout_height="483dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider6"
         app:layout_constraintVertical_bias="0.0" />
 
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/divider6"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
@@ -81,17 +93,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <ListView
-        android:id="@+id/testPageList"
-        android:layout_width="416dp"
-        android:layout_height="483dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.005"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.316" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
