@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Test;
+
+import java.util.List;
 
 public class TestPage extends AppCompatActivity {
 
@@ -27,7 +32,7 @@ public class TestPage extends AppCompatActivity {
         setContentView(R.layout.activity_test_page);
 
         // Gets which test that the user has clicked on
-        currentTest = (Test)getIntent().getSerializableExtra("Test");
+        currentTest = (Test)getIntent().getSerializableExtra("TEST");
         // Sets the title date and time at the top to the test the user clicked on
         titleView = (TextView)findViewById(R.id.testName);
         titleView.setText(currentTest.getTitle());

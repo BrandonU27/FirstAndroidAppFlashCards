@@ -16,6 +16,10 @@ public class Test implements Serializable{
         time = _time;
     }
 
+    public void addDeck(Deck _deck){
+        deckList.add(_deck);
+    }
+
     public String getTitle(){return title;}
     public String getDate(){return date;}
     public String getTime(){return time;}

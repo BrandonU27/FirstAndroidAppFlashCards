@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Test;
 
 import java.text.SimpleDateFormat;
@@ -19,20 +23,30 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Test testingTest;
+    private ListView homeL;
+    private List<Test> userTests;
+    private List<String> userNames;
+    private String selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Has all the test for the user
-        // Vars for the sample tests
-        List<Test> userTests = new ArrayList<>();
+        /*
+        Makes the lists that keeps track of the users tests
+        The names list is used for the list view to make it look better
+         */
+        userTests = new ArrayList<>();
+        userNames = new ArrayList<>();
 
         // Sample data
-        testingTest = new Test("Example Test", "3/23/22", "3:00pm");
-        userTests.add(testingTest);
+        userTests.add(new Test("Testing", "10.3.22", "3:00am"));
+        userTests.add(new Test("English HW", "10.30.22", "2:00pm"));
+        userTests.add(new Test("Math Alg", "10.13.22", "3:30pm"));
+        for (Test data: userTests){
+            userNames.add(data.getTitle());
+        }
         ///////////////////
 
         // Makes it so that the current data is able to be displayed on the home page
@@ -41,20 +55,32 @@ public class MainActivity extends AppCompatActivity {
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
-        // Getting the users tests and adding them to the total tests they have
-        // Vars for making sample test button
-        Button test1 = findViewById(R.id.testOne);
-        test1.setVisibility(View.VISIBLE);
-        test1.setEnabled(true);
-        String testButtonTitle = testingTest.getTitle() + "|| " + testingTest.getDate() + " || " + testingTest.getTime();
-        test1.setText(testButtonTitle);
+        // Adding the list as a var
+        homeL = (ListView)findViewById(R.id.homeList);
 
-        test1.setOnClickListener(view -> openTestPage());
+        // Creates an adapter
+        ArrayAdapter<String> adapt;
+        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, userNames);
+        homeL.setAdapter(adapt);
+
+        // Set itemclicked event
+        homeL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selected = userNames.get(i);
+                openTestPage();
+            }
+        });
     }
 
     public void openTestPage(){
         Intent intent = new Intent(this, TestPage.class);
-        intent.putExtra("Test", testingTest);
+        for (Test t : userTests){
+            if(selected == t.getTitle()){
+                intent.putExtra("TEST", t);
+            }
+        }
         startActivity(intent);
     }
+
 }
