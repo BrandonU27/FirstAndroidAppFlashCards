@@ -26,6 +26,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    // All these variables are used to make the list view work properly
     private ListView homeL;
     private List<Test> userTests;
     private List<String> userNames;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         userTests.add(new Test("Testing", "10.3.22", "3:00am"));
         userTests.add(new Test("English HW", "10.30.22", "2:00pm"));
 
-        Test sampleTes = new Test("TESTING ADDING", "12/31/20XX", "12:00pm");
+        Test sampleTes = new Test("Calculus Chapter 1", "12/31/2022", "12:00 pm");
         Deck sampleDec = new Deck("Unit 1");
 
         sampleTes.addDeck(sampleDec);
@@ -72,7 +73,18 @@ public class MainActivity extends AppCompatActivity {
         adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, userNames);
         homeL.setAdapter(adapt);
 
-        // Set itemclicked event
+        // Makes the add test dialog box open
+        //First gets the id of the button and adds to var
+        Button addTestButton = findViewById(R.id.addButton);
+        // Creates a click listener to see when it is clicked
+        addTestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addTestDialog();
+            }
+        });
+
+        // Set item clicked event
         homeL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -80,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                 openTestPage();
             }
         });
+    }
+
+    public void addTestDialog(){
+
     }
 
     public void openTestPage(){

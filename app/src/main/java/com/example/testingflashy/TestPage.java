@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
+import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ public class TestPage extends AppCompatActivity {
 
     // Going back button
     private ImageButton backButton;
+
+    // Study Button
+    private Button studyButton;
 
     // Test information
     private Test currentTest;
@@ -38,6 +43,9 @@ public class TestPage extends AppCompatActivity {
 
     // Selected Item in list
     private String selected;
+
+    // Makes a big deck with all the cards of every deck
+    List<Question> totalCards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +87,6 @@ public class TestPage extends AppCompatActivity {
                 toDeckPage();
             }
         });
-
-        // Sets the image button to take people back to home
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        backButton.setOnClickListener(view -> backToHome());
-    }
-
-    // This sends the user back to the home page
-    public void backToHome(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     // Sends the user to the deck page

@@ -89,22 +89,6 @@ public class DeckPage extends AppCompatActivity {
         adpt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
         deckL.setAdapter(adpt);
 
-        // Gets the back button and makes it clickable to send back to test page
-        backButton = findViewById(R.id.deckPageBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toTestPage();
-            }
-        });
     }
-
-    // Takes the user back to the test page
-    public void toTestPage(){
-        Intent in = new Intent(this, TestPage.class);
-        in.putExtra("TEST", (Test)getIntent().getSerializableExtra("TEST"));
-        startActivity(in);
-    }
-
 
 }
