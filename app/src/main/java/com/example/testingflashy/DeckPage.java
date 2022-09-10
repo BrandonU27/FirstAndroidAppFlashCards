@@ -72,18 +72,6 @@ public class DeckPage extends AppCompatActivity {
         stringCardCount = Integer.toString(intCardCount);
         cardCount.setText("Cards: " + stringCardCount);
 
-        // SAMPLE DATA DELETE LATER
-        Options text1 = new Options("Los Angeles", false);
-        Options text2 = new Options("Washington DC", true);
-        Options text3 = new Options("New York NY", false);
-        Options text4 = new Options("Naples FL", false  );
-
-        cardList.add(new Question("What is the capital of the United States?", text1, text2, text3, text4));
-
-        cardNames = new ArrayList<String>();
-        cardNames.add(cardList.get(0).getQuestion());
-        ////////////////////////////
-
         // Sets the list of names to the list view on the page
         ArrayAdapter<String> adpt;
         adpt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
