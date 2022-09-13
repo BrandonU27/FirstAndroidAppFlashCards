@@ -123,6 +123,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     public void makeDeck(String _title) {
         currentTest.addDeck(new Deck(_title));
         testsDecks = currentTest.getDeckList();
+        deckNames.clear();
         for(Deck d: testsDecks){
             deckNames.add(d.getName());
         }
