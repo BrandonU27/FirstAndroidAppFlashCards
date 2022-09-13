@@ -5,27 +5,19 @@
     android:padding="15dp">
 
     <EditText
-        android:id="@+id/name_input"
+        android:id="@+id/question_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Test Name"
+        android:hint="Question"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/date_input"
+        android:id="@+id/answer_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:hint="(MM/DD/YYYY)"/>
+        android:layout_marginTop="10dp"
+        android:hint="Answer"
+        android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/time_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        android:hint="XX:XX pm/am"/>
-
-    </LinearLayout>
+</LinearLayout>
