@@ -35,8 +35,13 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // Tells which one the user selected
     private String selected;
 
+    // List of past tests
+    private List<Test> pastTest;
+
     // Button for adding test
     private Button addButton;
+    // Button for going to past tests
+    private Button archiveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
          */
         userTests = new ArrayList<>();
         userNames = new ArrayList<>();
+        // past tests list
+        pastTest = new ArrayList<>();
 
         // Makes it so that the current data is able to be displayed on the home page
         //Vars for the date textview
@@ -69,6 +76,15 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
         // Calls method to update the list
         updateList();
+
+        // Button that goes to the past tests
+        archiveButton = findViewById(R.id.archiveButton);
+        archiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toArchivePage();
+            }
+        });
 
         // Makes the add test dialog box open
         //First gets the id of the button and adds to var
@@ -116,6 +132,11 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
                 intent.putExtra("TEST", t);
             }
         }
+        startActivity(intent);
+    }
+
+    public void toArchivePage(){
+        Intent intent = new Intent(this, ArchivePage.class);
         startActivity(intent);
     }
 

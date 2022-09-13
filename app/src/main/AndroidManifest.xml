@@ -14,6 +14,9 @@
         android:theme="@style/Theme.TestingFlashy"
         tools:targetApi="31">
         <activity
+            android:name=".ArchivePage"
+            android:exported="false" />
+        <activity
             android:name=".CardViewPage"
             android:exported="false" />
         <activity

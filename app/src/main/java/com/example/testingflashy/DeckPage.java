@@ -3,25 +3,18 @@ package com.example.testingflashy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
-import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddCardDialog;
-import com.example.testingflashy.dialogclasses.AddDeckDialog;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,20 +69,12 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
 
         // gets the add button
         addCard = findViewById(R.id.addCardButton);
-        addCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAddCardDialog();
-            }
-        });
+        addCard.setOnClickListener(view -> showAddCardDialog());
 
         // Makes the cards in list clickable for the suer to click on
-        deckL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                select = cardNames.get(i);
-                toCardView();
-            }
+        deckL.setOnItemClickListener((adapterView, view, i, l) -> {
+            select = cardNames.get(i);
+            toCardView();
         });
     }
 
