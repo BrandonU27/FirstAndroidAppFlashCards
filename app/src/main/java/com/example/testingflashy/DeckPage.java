@@ -26,16 +26,12 @@ import java.util.List;
 
 public class DeckPage extends AppCompatActivity{
 
-    // Going back button
-    private ImageButton backButton;
-
     // List View
     private ListView deckL;
 
     // Gets the deck currently clicked on
     private Deck currentDeck;
     private List<Question> cardList;
-
     // Gets all the card names
     private List<String> cardNames;
 
@@ -60,7 +56,20 @@ public class DeckPage extends AppCompatActivity{
         currentDeck = (Deck)getIntent().getSerializableExtra("DECK");
         cardList = currentDeck.getCardDeck();
 
+        /*
+        for (Question q: cardList){
+            cardNames.add(q.getQuestion());
+        }
+        ArrayAdapter<String> adapt;
+        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
+        deckL.setAdapter(adapt);
+        */
         // Sets all the views and titles
+        SetTitles();
+    }
+
+    // Sets all the views and titles
+    public void SetTitles(){
         // title
         title = findViewById(R.id.deckName);
         title.setText(currentDeck.getName());
@@ -72,12 +81,6 @@ public class DeckPage extends AppCompatActivity{
         intCardCount = currentDeck.getCardCount();
         stringCardCount = Integer.toString(intCardCount);
         cardCount.setText("Cards: " + stringCardCount);
-
-        // Sets the list of names to the list view on the page
-        ArrayAdapter<String> adpt;
-        adpt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
-        deckL.setAdapter(adpt);
-
     }
 
 }

@@ -89,11 +89,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Sends the user to the deck page
     public void toDeckPage(){
         Intent in = new Intent(this, DeckPage.class);
-        for (Deck d : testsDecks){
-            if(selected == d.getName()){
-                in.putExtra("DECK", d);
-            }
-            in.putExtra("TEST", currentTest);
+        for (Deck d: currentTest.getDeckList()){
+            if(selected == d.getName()){in.putExtra("DECK", d);}
         }
         startActivity(in);
     }
@@ -121,6 +118,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         timeView.setText(currentTest.getTime());
     }
 
+    // Method from add deck dialog that makes a deck to be added into the list
     @Override
     public void makeDeck(String _title) {
         currentTest.addDeck(new Deck(_title));

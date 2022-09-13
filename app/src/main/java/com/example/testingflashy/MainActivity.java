@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
         ////// SAMPLE DATA
         userTests.add(new Test("EXAMPLE", "12/12/12", "3:00pm"));
+        userTests.get(0).addDeck(new Deck("TEST"));
         for (Test t : userTests) {
             userNames.add(t.getTitle());
         }
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     @Override
     public void makeTest(String _title, String _date, String _time){
         userTests.add(new Test(_title,_date,_time));
+        userNames.clear();
         for (Test t: userTests){
             userNames.add(t.getTitle());
         }
