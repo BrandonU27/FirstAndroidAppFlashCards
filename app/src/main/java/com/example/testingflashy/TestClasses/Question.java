@@ -1,8 +1,9 @@
 package com.example.testingflashy.TestClasses;
 
+import java.io.Serializable;
 import java.security.cert.PKIXRevocationChecker;
 
-public class Question {
+public class Question implements Serializable {
     private String question;
     private  String answer;
 

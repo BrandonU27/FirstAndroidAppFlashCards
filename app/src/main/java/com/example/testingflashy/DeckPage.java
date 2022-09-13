@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -45,6 +46,9 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     private int intCardCount;
     private String stringCardCount;
 
+    // Keeps track on which card the user selected
+    private String select;
+
     // button for adding card
     private Button addCard;
 
@@ -78,6 +82,15 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
                 showAddCardDialog();
             }
         });
+
+        // Makes the cards in list clickable for the suer to click on
+        deckL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                select = cardNames.get(i);
+                toCardView();
+            }
+        });
     }
 
     // Sets all the views and titles
@@ -106,6 +119,17 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     public void showAddCardDialog(){
         AddCardDialog addCardDialog = new AddCardDialog();
         addCardDialog.show(getSupportFragmentManager(), "add card");
+    }
+
+    // Takes user to the card view page
+    public void toCardView(){
+        Intent intent = new Intent(this, CardViewPage.class);
+        for (Question q: cardList){
+            if(select == q.getQuestion()){
+                intent.putExtra("CARD", q);
+            }
+        }
+        startActivity(intent);
     }
 
     @Override
