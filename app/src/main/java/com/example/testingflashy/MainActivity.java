@@ -56,6 +56,13 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
+        ////// SAMPLE DATA
+        userTests.add(new Test("EXAMPLE", "12/12/12", "3:00pm"));
+        for (Test t : userTests) {
+            userNames.add(t.getTitle());
+        }
+        ////////////////////////
+
         // Adding the list as a var
         homeL = (ListView)findViewById(R.id.homeList);
 
@@ -116,5 +123,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, userNames);
         homeL.setAdapter(adapt);
     }
+
+
 
 }

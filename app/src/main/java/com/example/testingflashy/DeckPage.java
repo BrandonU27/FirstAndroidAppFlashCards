@@ -17,13 +17,14 @@ import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Options;
 import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
+import com.example.testingflashy.dialogclasses.AddDeckDialog;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeckPage extends AppCompatActivity {
+public class DeckPage extends AppCompatActivity{
 
     // Going back button
     private ImageButton backButton;

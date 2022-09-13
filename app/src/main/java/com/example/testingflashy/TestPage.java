@@ -16,17 +16,17 @@ import android.widget.TextView;
 import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
+import com.example.testingflashy.dialogclasses.AddDeckDialog;
+import com.example.testingflashy.dialogclasses.AddDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestPage extends AppCompatActivity {
+public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDeckDialogListener{
 
-    // Going back button
-    private ImageButton backButton;
-
-    // Study Button
+    // Study Button and add button
     private Button studyButton;
+    private Button addButton;
 
     // Test information
     private Test currentTest;
@@ -40,12 +40,8 @@ public class TestPage extends AppCompatActivity {
 
     // List View
     private ListView testL;
-
     // Selected Item in list
     private String selected;
-
-    // Makes a big deck with all the cards of every deck
-    List<Question> totalCards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +51,7 @@ public class TestPage extends AppCompatActivity {
         // Gets which test that the user has clicked on
         currentTest = (Test)getIntent().getSerializableExtra("TEST");
         // Sets the title date and time at the top to the test the user clicked on
-        titleView = findViewById(R.id.testName);
-        titleView.setText(currentTest.getTitle());
-        dateView = findViewById(R.id.testDate);
-        dateView.setText(currentTest.getDate());
-        timeView = findViewById(R.id.testTime);
-        timeView.setText(currentTest.getTime());
+        createTitle();
 
         // Create the list of decks and copy over the decklist
         deckNames = new ArrayList<String>();
@@ -73,11 +64,17 @@ public class TestPage extends AppCompatActivity {
 
         // sets the list view var to the list view
         testL = (ListView) findViewById(R.id.testPageList);
+        // Calls for list to update
+        updateList();
 
-        // Makes an adapter to set the deck names to the list view
-        ArrayAdapter<String> adapt;
-        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, deckNames);
-        testL.setAdapter(adapt);
+        // get the add deck button and call the dialog to open
+        addButton = findViewById(R.id.addDeckButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddDeckDialog();
+            }
+        });
 
         // Makes the decks in list clickable for the user to click on
         testL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,4 +98,36 @@ public class TestPage extends AppCompatActivity {
         startActivity(in);
     }
 
+    // Calls the add deck dialog to open
+    public void openAddDeckDialog(){
+        AddDeckDialog addDeckDialog = new AddDeckDialog();
+        addDeckDialog.show(getSupportFragmentManager(), "add deck");
+    }
+
+    // Updates the list method
+    public void updateList(){
+        ArrayAdapter<String> adapt;
+        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, deckNames);
+        testL.setAdapter(adapt);
+    }
+
+    // Create page titles
+    public void createTitle(){
+        titleView = findViewById(R.id.testName);
+        titleView.setText(currentTest.getTitle());
+        dateView = findViewById(R.id.testDate);
+        dateView.setText(currentTest.getDate());
+        timeView = findViewById(R.id.testTime);
+        timeView.setText(currentTest.getTime());
+    }
+
+    @Override
+    public void makeDeck(String _title) {
+        currentTest.addDeck(new Deck(_title));
+        testsDecks = currentTest.getDeckList();
+        for(Deck d: testsDecks){
+            deckNames.add(d.getName());
+        }
+        updateList();
+    }
 }
