@@ -5,22 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
-import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDeckDialog;
-import com.example.testingflashy.dialogclasses.AddDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDeckDialogListener{
 
@@ -54,7 +51,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         createTitle();
 
         // Create the list of decks and copy over the decklist
-        deckNames = new ArrayList<String>();
+        deckNames = new ArrayList<>();
         testsDecks = currentTest.getDeckList();
 
         // Gets all the names of the decks and puts them into a list
@@ -63,26 +60,18 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         }
 
         // sets the list view var to the list view
-        testL = (ListView) findViewById(R.id.testPageList);
+        testL = findViewById(R.id.testPageList);
         // Calls for list to update
         updateList();
 
         // get the add deck button and call the dialog to open
         addButton = findViewById(R.id.addDeckButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddDeckDialog();
-            }
-        });
+        addButton.setOnClickListener(view -> openAddDeckDialog());
 
         // Makes the decks in list clickable for the user to click on
-        testL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selected = deckNames.get(i);
-                toDeckPage();
-            }
+        testL.setOnItemClickListener((adapterView, view, i, l) -> {
+            selected = deckNames.get(i);
+            toDeckPage();
         });
     }
 
@@ -90,7 +79,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     public void toDeckPage(){
         Intent in = new Intent(this, DeckPage.class);
         for (Deck d: currentTest.getDeckList()){
-            if(selected == d.getName()){in.putExtra("DECK", d);}
+            if(Objects.equals(selected, d.getName())){in.putExtra("DECK", d);}
         }
         startActivity(in);
     }
@@ -104,7 +93,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Updates the list method
     public void updateList(){
         ArrayAdapter<String> adapt;
-        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, deckNames);
+        adapt = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, deckNames);
         testL.setAdapter(adapt);
     }
 

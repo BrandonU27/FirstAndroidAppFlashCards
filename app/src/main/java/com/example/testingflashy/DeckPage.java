@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,6 +16,7 @@ import com.example.testingflashy.dialogclasses.AddCardDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCardDialogListener {
 
@@ -52,7 +51,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
 
         // Gets the list view
         deckL = findViewById(R.id.deckPageView);
-        cardNames = new ArrayList<String>();
+        cardNames = new ArrayList<>();
 
         // Gets the deck that the user clicked on and puts it in var
         currentDeck = (Deck)getIntent().getSerializableExtra("DECK");
@@ -96,7 +95,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     // updates the list view
     public void updateList(){
         ArrayAdapter<String> adapt;
-        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
+        adapt = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cardNames);
         deckL.setAdapter(adapt);
     }
 
@@ -110,7 +109,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     public void toCardView(){
         Intent intent = new Intent(this, CardViewPage.class);
         for (Question q: cardList){
-            if(select == q.getQuestion()){
+            if(Objects.equals(select, q.getQuestion())){
                 intent.putExtra("CARD", q);
             }
         }
@@ -126,5 +125,6 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
             cardNames.add(q.getQuestion());
         }
         updateList();
+        SetTitles();
     }
 }

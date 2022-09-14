@@ -2,7 +2,6 @@ package com.example.testingflashy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,22 +9,29 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
-import com.example.testingflashy.TestClasses.Options;
-import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
+import com.example.testingflashy.dialogclasses.SettingDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements AddDialog.AddDialogListener {
+public class MainActivity extends AppCompatActivity implements AddDialog.AddDialogListener, SettingDialog.SettingDialogListener {
+
+    // Study MODE
+    // 0 = no study on
+    // 1 = daily correct incorrect pile
+    // 2 = ?????????
+    int mode = 0;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
     // Button for adding test
     private Button addButton;
+    private ImageButton settingsButton;
     // Button for going to past tests
     private Button archiveButton;
 
@@ -72,38 +79,29 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         ////////////////////////
 
         // Adding the list as a var
-        homeL = (ListView)findViewById(R.id.homeList);
+        homeL = findViewById(R.id.homeList);
 
         // Calls method to update the list
         updateList();
 
         // Button that goes to the past tests
         archiveButton = findViewById(R.id.archiveButton);
-        archiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toArchivePage();
-            }
-        });
+        archiveButton.setOnClickListener(view -> toArchivePage());
+
+        //Opens the settings Dialog
+        settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(view -> toSettingPage());
 
         // Makes the add test dialog box open
         //First gets the id of the button and adds to var
         addButton = findViewById(R.id.addButton);
         // Creates a click listener to see when it is clicked
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addTestDialog();
-            }
-        });
+        addButton.setOnClickListener(view -> addTestDialog());
 
         // Set item clicked event for selecting a test
-        homeL.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selected = userNames.get(i);
-                openTestPage();
-            }
+        homeL.setOnItemClickListener((adapterView, view, i, l) -> {
+            selected = userNames.get(i);
+            openTestPage();
         });
     }
 
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     public void openTestPage(){
         Intent intent = new Intent(this, TestPage.class);
         for (Test t : userTests){
-            if(selected == t.getTitle()){
+            if(Objects.equals(selected, t.getTitle())){
                 intent.putExtra("TEST", t);
             }
         }
@@ -143,10 +141,28 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // Makes an adaptor for the list and then adds the userNames to the list to update it
     public void updateList(){
         ArrayAdapter<String> adapt;
-        adapt = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, userNames);
+        adapt = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, userNames);
         homeL.setAdapter(adapt);
     }
 
+    // Opens the settings button
+    public void toSettingPage(){
+        SettingDialog settingDialog = new SettingDialog();
+        settingDialog.show(getSupportFragmentManager(), "setting dialog");
+    }
+
+    @Override
+    public void studyChange(Boolean _op1, Boolean _op2, Boolean _op3) {
+        if(_op1 == true){
+            mode = 0;
+        }
+        if(_op2 == true){
+            mode = 1;
+        }
+        if(_op3 == true){
+            mode = 2;
+        }
 
 
+    }
 }
