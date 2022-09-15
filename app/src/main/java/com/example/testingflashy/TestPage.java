@@ -16,6 +16,7 @@ import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDeckDialog;
 
+import java.time.chrono.MinguoChronology;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -33,8 +34,11 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     private TextView timeView;
 
     //Deck vars to help the listview
-    private List<Deck> testsDecks;
+    public static List<Deck> testsDecks;
     private List<String> deckNames;
+
+    // Tracks which deck is selected
+    private int selectedDeck;
 
     // List View
     private ListView testL;
@@ -50,6 +54,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         currentTest = (Test)getIntent().getSerializableExtra("TEST");
         // Sets the title date and time at the top to the test the user clicked on
         createTitle();
+
+        //checks which mode
+        whichStudy();
 
         // Create the list of decks and copy over the decklist
         deckNames = new ArrayList<>();
@@ -72,6 +79,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         // Makes the decks in list clickable for the user to click on
         testL.setOnItemClickListener((adapterView, view, i, l) -> {
             selected = deckNames.get(i);
+            selectedDeck = i;
             toDeckPage();
         });
 
@@ -83,7 +91,12 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     public void toDeckPage(){
         Intent in = new Intent(this, DeckPage.class);
         for (Deck d: currentTest.getDeckList()){
-            if(Objects.equals(selected, d.getName())){in.putExtra("DECK", d);}
+            if(Objects.equals(selected, d.getName()))
+            {
+                in.putExtra("DECK", d);
+                in.putExtra("SELECTEDTEST", (int)getIntent().getSerializableExtra("SELECTEDTEST"));
+                in.putExtra("SELECTEDECK", selectedDeck);
+            }
         }
         in.putExtra("SELECTED", selected);
         startActivity(in);
@@ -112,10 +125,29 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         timeView.setText(currentTest.getTime());
     }
 
+    //Which study
+    public void whichStudy(){
+        if(MainActivity.mode == 0){
+            for (int i = 0; i < testsDecks.size(); i++){
+
+            }
+        }
+        if(MainActivity.mode == 1){
+            currentTest.addDeck(new Deck("Correct"));
+            currentTest.addDeck(new Deck("Wrong"));
+            MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
+                    .addDeck(new Deck("Correct"));
+            MainActivity.userTests.get((int)getIntent().getSerializableExtra("SELECTEDTEST"))
+                    .addDeck(new Deck("Wrong"));
+        }
+    }
+
     // Method from add deck dialog that makes a deck to be added into the list
     @Override
     public void makeDeck(String _title) {
         currentTest.addDeck(new Deck(_title));
+        MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
+                .addDeck(new Deck(_title));
         testsDecks = currentTest.getDeckList();
         deckNames.clear();
         for(Deck d: testsDecks){

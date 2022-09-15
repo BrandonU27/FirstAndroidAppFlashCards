@@ -116,9 +116,16 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         startActivity(intent);
     }
 
+
+    // FIX THIS SO I DONT HAVE TO UPDATE THE LAST ON
     @Override
     public void makeCard(String _question, String _answer) {
         currentDeck.addCard(new Question(_question, _answer));
+        MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
+                .getDeckList().get((int) getIntent().getSerializableExtra("SELECTEDECK"))
+                .addCard(new Question(_question,_answer));
+        TestPage.testsDecks.get((int)getIntent().getSerializableExtra("SELECTEDECK"))
+                .addCard(new Question(_question, _answer));
         cardList = currentDeck.getCardDeck();
         cardNames.clear();
         for (Question q: cardList){
@@ -127,4 +134,6 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         updateList();
         SetTitles();
     }
+
+    ///////////////////////////////////////////////
 }

@@ -32,16 +32,19 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 0 = no study on
     // 1 = daily correct incorrect pile
     // 2 = ?????????
-    int mode = 0;
+    public static int mode = 0;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
     // Holds the data for the test adn the test names
-    public List<Test> userTests;
+    public static List<Test> userTests;
     private List<String> userNames;
+
+
     // Tells which one the user selected
     public Test currentTest;
     private String selected;
+    private int selectedTest;
 
     // List of past tests
     private List<Test> pastTest;
@@ -72,17 +75,10 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
-        ////// SAMPLE DATA
-        userTests.add(new Test("EXAMPLE", "12/12/12", "3:00pm"));
-        userTests.get(0).addDeck(new Deck("TEST"));
-        for (Test t : userTests) {
-            userNames.add(t.getTitle());
-        }
-        ////////////////////////
+        //
 
         // Adding the list as a var
         homeL = findViewById(R.id.homeList);
-
         // Calls method to update the list
         updateList();
 
@@ -103,8 +99,10 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         // Set item clicked event for selecting a test
         homeL.setOnItemClickListener((adapterView, view, i, l) -> {
             selected = userNames.get(i);
+            selectedTest = i;
             openTestPage();
         });
+
     }
 
     // Makes it so that the user can call the dialog box class to show up
@@ -130,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         for (Test t : userTests){
             if(Objects.equals(selected, t.getTitle())){
                 intent.putExtra("TEST", t);
+                intent.putExtra("SELECTEDTEST", selectedTest);
             }
         }
         startActivity(intent);
