@@ -40,6 +40,9 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
 
     // Keeps track on which card the user selected
     private String select;
+    // Gets the main selected numbers
+    private int selectedTest;
+    private int selectedDeck;
 
     // button for adding card
     private Button addCard;
@@ -48,6 +51,10 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deck_page);
+
+        // Gets the numbers passed in
+        selectedTest = (int)getIntent().getSerializableExtra("SELECTEDTEST");
+        selectedDeck = (int)getIntent().getSerializableExtra("SELECTEDECK");
 
         // Gets the list view
         deckL = findViewById(R.id.deckPageView);
@@ -121,10 +128,10 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     @Override
     public void makeCard(String _question, String _answer) {
         currentDeck.addCard(new Question(_question, _answer));
-        MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
-                .getDeckList().get((int) getIntent().getSerializableExtra("SELECTEDECK"))
+        MainActivity.userTests.get(selectedTest)
+                .getDeckList().get(selectedDeck)
                 .addCard(new Question(_question,_answer));
-        TestPage.testsDecks.get((int)getIntent().getSerializableExtra("SELECTEDECK"))
+        TestPage.testsDecks.get(selectedDeck)
                 .addCard(new Question(_question, _answer));
         cardList = currentDeck.getCardDeck();
         cardNames.clear();
@@ -136,4 +143,10 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     }
 
     ///////////////////////////////////////////////
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

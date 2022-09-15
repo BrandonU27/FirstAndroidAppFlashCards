@@ -32,4 +32,10 @@ public class CardViewPage extends AppCompatActivity {
         frontCard.setText(question);
         backCard.setText(answer);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

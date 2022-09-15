@@ -39,6 +39,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // Tracks which deck is selected
     private int selectedDeck;
+    // Gets the selected test number
+    private int selectedTest;
 
     // List View
     private ListView testL;
@@ -49,6 +51,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_page);
+
+        // Gets selected test
+        selectedTest = (int)getIntent().getSerializableExtra("SELECTEDTEST");
 
         // Gets which test that the user has clicked on
         currentTest = (Test)getIntent().getSerializableExtra("TEST");
@@ -94,7 +99,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             if(Objects.equals(selected, d.getName()))
             {
                 in.putExtra("DECK", d);
-                in.putExtra("SELECTEDTEST", (int)getIntent().getSerializableExtra("SELECTEDTEST"));
+                in.putExtra("SELECTEDTEST", selectedTest);
                 in.putExtra("SELECTEDECK", selectedDeck);
             }
         }
@@ -128,16 +133,13 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     //Which study
     public void whichStudy(){
         if(MainActivity.mode == 0){
-            for (int i = 0; i < testsDecks.size(); i++){
-
-            }
         }
         if(MainActivity.mode == 1){
             currentTest.addDeck(new Deck("Correct"));
             currentTest.addDeck(new Deck("Wrong"));
-            MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
+            MainActivity.userTests.get(selectedTest)
                     .addDeck(new Deck("Correct"));
-            MainActivity.userTests.get((int)getIntent().getSerializableExtra("SELECTEDTEST"))
+            MainActivity.userTests.get(selectedTest)
                     .addDeck(new Deck("Wrong"));
         }
     }
@@ -146,7 +148,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     @Override
     public void makeDeck(String _title) {
         currentTest.addDeck(new Deck(_title));
-        MainActivity.userTests.get((int) getIntent().getSerializableExtra("SELECTEDTEST"))
+        MainActivity.userTests.get(selectedTest)
                 .addDeck(new Deck(_title));
         testsDecks = currentTest.getDeckList();
         deckNames.clear();
@@ -156,4 +158,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         updateList();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
