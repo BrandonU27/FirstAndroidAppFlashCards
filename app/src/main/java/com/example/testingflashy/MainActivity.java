@@ -1,5 +1,6 @@
 package com.example.testingflashy;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -36,9 +37,10 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // All these variables are used to make the list view work properly
     private ListView homeL;
     // Holds the data for the test adn the test names
-    private List<Test> userTests;
+    public List<Test> userTests;
     private List<String> userNames;
     // Tells which one the user selected
+    public Test currentTest;
     private String selected;
 
     // List of past tests
@@ -162,7 +164,5 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         if(_op3 == true){
             mode = 2;
         }
-
-
     }
 }

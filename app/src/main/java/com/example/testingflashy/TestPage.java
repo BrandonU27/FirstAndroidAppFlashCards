@@ -1,5 +1,6 @@
 package com.example.testingflashy;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,7 +27,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     private Button addButton;
 
     // Test information
-    private Test currentTest;
+    public Test currentTest;
     private TextView titleView;
     private TextView dateView;
     private TextView timeView;
@@ -73,6 +74,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             selected = deckNames.get(i);
             toDeckPage();
         });
+
+
+
     }
 
     // Sends the user to the deck page
@@ -81,6 +85,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         for (Deck d: currentTest.getDeckList()){
             if(Objects.equals(selected, d.getName())){in.putExtra("DECK", d);}
         }
+        in.putExtra("SELECTED", selected);
         startActivity(in);
     }
 
@@ -118,4 +123,5 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         }
         updateList();
     }
+
 }

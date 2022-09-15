@@ -14,10 +14,9 @@
         android:textSize="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <TextView
         android:id="@+id/testDate"
