@@ -1,20 +1,16 @@
 package com.example.testingflashy;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
@@ -42,12 +38,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
 
     // Tells which one the user selected
-    public Test currentTest;
     private String selected;
     private int selectedTest;
-
-    // List of past tests
-    private List<Test> pastTest;
 
     // Button for adding test
     private Button addButton;
@@ -66,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
          */
         userTests = new ArrayList<>();
         userNames = new ArrayList<>();
-        // past tests list
-        pastTest = new ArrayList<>();
 
         // Makes it so that the current data is able to be displayed on the home page
         //Vars for the date textview
@@ -154,13 +144,13 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
     @Override
     public void studyChange(Boolean _op1, Boolean _op2, Boolean _op3) {
-        if(_op1 == true){
+        if(_op1){
             mode = 0;
         }
-        if(_op2 == true){
+        if(_op2){
             mode = 1;
         }
-        if(_op3 == true){
+        if(_op3){
             mode = 2;
         }
     }

@@ -1,12 +1,9 @@
 package com.example.testingflashy;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,7 +13,6 @@ import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDeckDialog;
 
-import java.time.chrono.MinguoChronology;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +59,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         //checks which mode
         whichStudy();
 
-        // Create the list of decks and copy over the decklist
+        // Create the list of decks and copy over the deck list
         deckNames = new ArrayList<>();
         testsDecks = currentTest.getDeckList();
 
