@@ -133,14 +133,21 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     //Which study
     public void whichStudy(){
         if(MainActivity.mode == 0){
+            // WORK ON NO STUDY MODE
+
+            ///////////////////////
         }
         if(MainActivity.mode == 1){
-            currentTest.addDeck(new Deck("Correct"));
-            currentTest.addDeck(new Deck("Wrong"));
+            for (Deck t: currentTest.getDeckList()){
+                if(Objects.equals(t.getName(), "Correct"))
+                    return;
+            }
+            currentTest.addFrontDeck(new Deck("Correct"));
+            currentTest.addFrontDeck(new Deck("Wrong"));
             MainActivity.userTests.get(selectedTest)
-                    .addDeck(new Deck("Correct"));
+                    .addFrontDeck(new Deck("Correct"));
             MainActivity.userTests.get(selectedTest)
-                    .addDeck(new Deck("Wrong"));
+                    .addFrontDeck(new Deck("Wrong"));
         }
     }
 

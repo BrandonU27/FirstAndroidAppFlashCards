@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -97,6 +98,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         intCardCount = currentDeck.getCardCount();
         stringCardCount = Integer.toString(intCardCount);
         cardCount.setText("Cards: " + stringCardCount);
+
     }
 
     // updates the list view
@@ -123,8 +125,6 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         startActivity(intent);
     }
 
-
-    // FIX THIS SO I DONT HAVE TO UPDATE THE LAST ON
     @Override
     public void makeCard(String _question, String _answer) {
         currentDeck.addCard(new Question(_question, _answer));
@@ -141,8 +141,6 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         updateList();
         SetTitles();
     }
-
-    ///////////////////////////////////////////////
 
     @Override
     public void onBackPressed() {

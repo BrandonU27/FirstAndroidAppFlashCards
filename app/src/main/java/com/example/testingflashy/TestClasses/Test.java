@@ -21,6 +21,7 @@ public class Test implements Serializable{
     public void addDeck(Deck _deck){
         deckList.add(_deck);
     }
+    public void addFrontDeck(Deck _deck){deckList.add(0, _deck);}
 
     public String getTitle(){return title;}
     public String getDate(){return date;}
