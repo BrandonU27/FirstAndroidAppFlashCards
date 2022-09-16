@@ -1,6 +1,7 @@
 package com.example.testingflashy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 0 = no study on
     // 1 = daily correct incorrect pile
     // 2 = ?????????
-    public static int mode = 0;
+    public static int mode = 1;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;

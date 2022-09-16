@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
+import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDeckDialog;
 
@@ -20,7 +21,6 @@ import java.util.Objects;
 public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDeckDialogListener{
 
     // Study Button and add button
-    private Button studyButton;
     private Button addButton;
 
     // Test information
@@ -84,8 +84,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             toDeckPage();
         });
 
-
-
+        // Makes study button to take user to study
+        Button studyButton = findViewById(R.id.studyButton);
+        studyButton.setOnClickListener(view -> toStudyPage());
     }
 
     // Sends the user to the deck page
@@ -101,6 +102,19 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         }
         in.putExtra("SELECTED", selected);
         startActivity(in);
+    }
+
+    // Takes to study page
+    public void toStudyPage(){
+        Deck mainDeck = new Deck("MasterDeck");
+        for (Deck d : currentTest.getDeckList()){
+            for (Question q : d.getCardDeck()){
+                mainDeck.addCard(q);
+            }
+        }
+        Intent intent = new Intent(this, StudyPage.class);
+        intent.putExtra("MAINDECK", mainDeck);
+        startActivity(intent);
     }
 
     // Calls the add deck dialog to open
@@ -129,9 +143,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     //Which study
     public void whichStudy(){
         if(MainActivity.mode == 0){
-            // WORK ON NO STUDY MODE
 
-            ///////////////////////
         }
         if(MainActivity.mode == 1){
             for (Deck t: currentTest.getDeckList()){
