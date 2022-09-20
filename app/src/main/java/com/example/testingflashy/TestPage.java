@@ -1,7 +1,9 @@
 package com.example.testingflashy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -118,7 +120,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Takes to study page
     public void toStudyPage(){
         if(studyDeck.getCardCount() < 3){
-
+            messagePopUp("Sorry you need more then 3 cards to go into study mode.\nTry adding more cards.");
         }
         else {
             Intent intent = new Intent(this, StudyPage.class);
@@ -166,6 +168,23 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             MainActivity.userTests.get(selectedTest)
                     .addFrontDeck(new Deck("Wrong"));
         }
+    }
+
+    // Makes a message pop up for users
+    public void messagePopUp(String _message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setCancelable(true);
+        builder.setTitle("Results");
+        builder.setMessage(_message);
+
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.show();
     }
 
     // Method from add deck dialog that makes a deck to be added into the list

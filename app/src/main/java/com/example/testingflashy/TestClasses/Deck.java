@@ -39,4 +39,6 @@ public class Deck implements Serializable {
     public List<Question> getCardDeck(){return cardDeck;}
 
     public Question getFirstCard(){return cardDeck.get(0);}
+
+    public void removeFirstCard(){cardDeck.remove(0);}
 }
