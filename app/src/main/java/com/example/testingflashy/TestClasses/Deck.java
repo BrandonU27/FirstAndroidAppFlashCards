@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,8 +29,14 @@ public class Deck implements Serializable {
         cardCount++;
     }
 
+    public void randomize(){
+        Collections.shuffle(cardDeck);
+    }
+
     public String getName(){return name;}
     public String getCreatedOn(){return createdOn;}
     public int getCardCount(){return cardCount;}
     public List<Question> getCardDeck(){return cardDeck;}
+
+    public Question getFirstCard(){return cardDeck.get(0);}
 }

@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.testingflashy.TestClasses.Deck;
+import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
@@ -29,14 +31,15 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 0 = no study on
     // 1 = daily correct incorrect pile
     // 2 = ?????????
-    public static int mode = 1;
+    public static int mode = 0;
+
+    public static Deck studyDeck;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
     // Holds the data for the test adn the test names
     public static List<Test> userTests;
     private List<String> userNames;
-
 
     // Tells which one the user selected
     private String selected;
@@ -66,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
-        //
+        // Makes the study deck
+        studyDeck = new Deck("Study Deck");
 
         // Adding the list as a var
         homeL = findViewById(R.id.homeList);

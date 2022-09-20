@@ -106,14 +106,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // Takes to study page
     public void toStudyPage(){
-        Deck mainDeck = new Deck("MasterDeck");
-        for (Deck d : currentTest.getDeckList()){
-            for (Question q : d.getCardDeck()){
-                mainDeck.addCard(q);
-            }
-        }
         Intent intent = new Intent(this, StudyPage.class);
-        intent.putExtra("MAINDECK", mainDeck);
         startActivity(intent);
     }
 

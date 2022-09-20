@@ -23,4 +23,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.102" />
 
+    <Button
+        android:id="@+id/option1Button"
+        android:layout_width="347dp"
+        android:layout_height="60dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionView"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <Button
+        android:id="@+id/option2Button"
+        android:layout_width="347dp"
+        android:layout_height="60dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option1Button"
+        app:layout_constraintVertical_bias="0.173" />
+
+    <Button
+        android:id="@+id/option3Button"
+        android:layout_width="351dp"
+        android:layout_height="60dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option2Button"
+        app:layout_constraintVertical_bias="0.344" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

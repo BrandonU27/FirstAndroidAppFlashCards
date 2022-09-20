@@ -127,6 +127,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     @Override
     public void makeCard(String _question, String _answer) {
         currentDeck.addCard(new Question(_question, _answer));
+        MainActivity.studyDeck.addCard(new Question(_question, _answer));
         MainActivity.userTests.get(selectedTest)
                 .getDeckList().get(selectedDeck)
                 .addCard(new Question(_question,_answer));
