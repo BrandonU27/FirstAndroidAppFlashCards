@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
-import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
@@ -32,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 1 = daily correct incorrect pile
     // 2 = ?????????
     public static int mode = 0;
-
-    public static Deck studyDeck;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
@@ -68,9 +65,6 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         TextView dateView = findViewById(R.id.currentDate);
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
-
-        // Makes the study deck
-        studyDeck = new Deck("Study Deck");
 
         // Adding the list as a var
         homeL = findViewById(R.id.homeList);

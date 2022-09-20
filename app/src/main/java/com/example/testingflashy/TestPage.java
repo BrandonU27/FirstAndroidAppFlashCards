@@ -43,6 +43,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Selected Item in list
     private String selected;
 
+    // Study deck
+    public static Deck studyDeck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,14 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         currentTest = (Test)getIntent().getSerializableExtra("TEST");
         // Sets the title date and time at the top to the test the user clicked on
         createTitle();
+
+        // Create Study deck
+        studyDeck = new Deck("Study Deck");
+        for (Deck d: currentTest.getDeckList()){
+            for (Question q : d.getCardDeck()){
+                studyDeck.addCard(q);
+            }
+        }
 
         //checks which mode
         whichStudy();
