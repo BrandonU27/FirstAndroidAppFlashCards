@@ -1,8 +1,10 @@
 package com.example.testingflashy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,9 +37,13 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
+
     // Holds the data for the test adn the test names
     public static List<Test> userTests;
     private List<String> userNames;
+
+    // list of all the past test that are past date
+    public static List<Test> pastTests;
 
     // Tells which one the user selected
     private String selected;
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
          */
         userTests = new ArrayList<>();
         userNames = new ArrayList<>();
+        pastTests = new ArrayList<>();
 
         // Makes it so that the current data is able to be displayed on the home page
         //Vars for the date textview
@@ -133,9 +140,15 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         startActivity(intent);
     }
 
+    // opens the page with past tests
     public void toArchivePage(){
-        Intent intent = new Intent(this, ArchivePage.class);
-        startActivity(intent);
+        if(pastTests.size() == 0){
+            messagePopUp("You currently have no tests that pasted.\nAs time goes by you'll start to fill this page up.");
+        }
+        else {
+            Intent intent = new Intent(this, ArchivePage.class);
+            startActivity(intent);
+        }
     }
 
     // Makes an adaptor for the list and then adds the userNames to the list to update it
@@ -151,6 +164,24 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         settingDialog.show(getSupportFragmentManager(), "setting dialog");
     }
 
+    // lets the user make a pop up message based on what they enter
+    public void messagePopUp(String _message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setCancelable(true);
+        builder.setTitle("Results");
+        builder.setMessage(_message);
+
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    // method to update the study mode based on the users dialog choice
     @Override
     public void studyChange(Boolean _op1, Boolean _op2, Boolean _op3) {
         if(_op1){

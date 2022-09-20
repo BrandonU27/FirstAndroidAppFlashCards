@@ -116,16 +116,16 @@ public class StudyPage extends AppCompatActivity {
                     option3Button.setText(tempWrong);
                     break;
                 case 2:
-                    while(tempWrong == currentQuestion.getQuestion()){tempWrong = wronganswerAdd();}
+                    while(tempWrong == currentQuestion.getAnswer()){tempWrong = wronganswerAdd();}
                     option1Button.setText(tempWrong);
                     option2Button.setText(currentQuestion.getAnswer());
-                    while(tempWrong == currentQuestion.getQuestion() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
+                    while(tempWrong == option2Button.getText() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
                     option3Button.setText(tempWrong);
                     break;
                 case 3:
-                    while(tempWrong == currentQuestion.getQuestion()){tempWrong = wronganswerAdd();}
+                    while(tempWrong == currentQuestion.getAnswer()){tempWrong = wronganswerAdd();}
                     option1Button.setText(tempWrong);
-                    while(tempWrong == currentQuestion.getQuestion() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
+                    while(tempWrong == currentQuestion.getAnswer() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
                     option2Button.setText(tempWrong);
                     option3Button.setText(currentQuestion.getAnswer());
                     break;
