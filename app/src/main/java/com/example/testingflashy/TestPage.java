@@ -117,8 +117,13 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // Takes to study page
     public void toStudyPage(){
-        Intent intent = new Intent(this, StudyPage.class);
-        startActivity(intent);
+        if(studyDeck.getCardCount() < 3){
+
+        }
+        else {
+            Intent intent = new Intent(this, StudyPage.class);
+            startActivity(intent);
+        }
     }
 
     // Calls the add deck dialog to open

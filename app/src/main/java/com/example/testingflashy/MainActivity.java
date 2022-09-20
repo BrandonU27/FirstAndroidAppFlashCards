@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
+import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
@@ -65,6 +66,15 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         TextView dateView = findViewById(R.id.currentDate);
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
+
+        ///////////////////////EXAMPLE DATA WILL DELTE FINAL BUILD
+        userTests.add(new Test("EXAMPLE TEST", "02/21/23", "5:00am"));
+        userTests.get(0).addDeck(new Deck("SAMPLE DECK"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a flying animal?", "Bat"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a type of bear?", "Polar Bear"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a bug?", "Ant"));
+        userNames.add(userTests.get(0).getTitle());
+        //////////////////////////////////////////////////////////
 
         // Adding the list as a var
         homeL = findViewById(R.id.homeList);

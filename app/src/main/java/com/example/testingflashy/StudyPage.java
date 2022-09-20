@@ -29,6 +29,8 @@ public class StudyPage extends AppCompatActivity {
     private Button option2Button;
     private Button option3Button;
 
+    private int correctAnswer;
+
     private int currentQuestionNumber;
 
     private List<String> wrongAnswers;
@@ -48,7 +50,6 @@ public class StudyPage extends AppCompatActivity {
         TestPage.studyDeck.randomize();
 
         currentQuestionNumber = 0;
-
         for (Question q : TestPage.studyDeck.getCardDeck()){
             wrongAnswers.add(q.getAnswer());
         }
@@ -59,13 +60,37 @@ public class StudyPage extends AppCompatActivity {
     public void setPageQuestion(){
         Question currentQuestion = TestPage.studyDeck.getFirstCard();
         currentQuestionNumber++;
+        if(currentQuestionNumber > TestPage.studyDeck.getCardCount()){finish();}
         questionCountView.setText("Question: " + currentQuestionNumber + "/" + TestPage.studyDeck.getCardCount());
 
         questionView.setText(currentQuestion.getQuestion());
 
-        option1Button.setText(currentQuestion.getAnswer());
-        option2Button.setText(wrongAnswers.get(1));
-        option3Button.setText(wrongAnswers.get(2));
+        Random random = new Random();
+        correctAnswer = random.nextInt(3);
+        correctAnswer++;
+
+        switch (correctAnswer){
+            case 1:
+                option1Button.setText(currentQuestion.getAnswer());
+                option2Button.setText(wronganswerAdd());
+                option3Button.setText(wronganswerAdd());
+                break;
+            case 2:
+                option1Button.setText(wronganswerAdd());
+                option2Button.setText(currentQuestion.getAnswer());
+                option3Button.setText(wronganswerAdd());
+                break;
+            case 3:
+                option1Button.setText(wronganswerAdd());
+                option2Button.setText(wronganswerAdd());
+                option3Button.setText(currentQuestion.getAnswer());
+                break;
+        }
+    }
+
+    public String wronganswerAdd(){
+        Collections.shuffle(wrongAnswers);
+        return wrongAnswers.get(0);
     }
 
     @Override
