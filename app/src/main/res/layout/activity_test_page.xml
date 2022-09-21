@@ -71,11 +71,11 @@
 
     <ListView
         android:id="@+id/testPageList"
-        android:layout_width="416dp"
-        android:layout_height="483dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="414dp"
+        android:layout_height="387dp"
+        app:layout_constraintBottom_toTopOf="@+id/wrongDeckButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:layout_constraintVertical_bias="0.0" />
@@ -92,6 +92,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.969" />
+
+    <Button
+        android:id="@+id/correctDeckButton"
+        android:layout_width="210dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="4dp"
+        android:text="Correct"
+        android:textSize="30dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/wrongDeckButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/wrongDeckButton"
+        android:layout_width="210dp"
+        android:layout_height="87dp"
+        android:text="Wrong"
+        android:textSize="30dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

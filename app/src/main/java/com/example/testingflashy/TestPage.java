@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -48,10 +49,18 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Study deck
     public static Deck studyDeck;
 
+    // Correct and wrong deck buttons
+    private Button correctButton;
+    private Button wrongButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_page);
+
+        // gets the correct and wrong button ids
+        correctButton = findViewById(R.id.correctDeckButton);
+        wrongButton = findViewById(R.id.wrongDeckButton);
 
         // Gets selected test
         selectedTest = (int)getIntent().getSerializableExtra("SELECTEDTEST");
@@ -100,6 +109,24 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         // Makes study button to take user to study
         Button studyButton = findViewById(R.id.studyButton);
         studyButton.setOnClickListener(view -> toStudyPage());
+
+        correctButton.setOnClickListener(view -> toCorrect());
+        wrongButton.setOnClickListener(view -> toWrong());
+    }
+    // To correct deck page
+    public void toCorrect(){
+        Intent intent = new Intent(this, CorrectWrongDeck.class);
+        intent.putExtra("WHICH", "Correct");
+        intent.putExtra("SELECTEDTEST", selectedTest);
+        startActivity(intent);
+    }
+
+    // to wrong deck page
+    public void toWrong(){
+        Intent intent = new Intent(this, CorrectWrongDeck.class);
+        intent.putExtra("WHICH", "Wrong");
+        intent.putExtra("SELECTEDTEST", selectedTest);
+        startActivity(intent);
     }
 
     // Sends the user to the deck page
@@ -124,6 +151,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         }
         else {
             Intent intent = new Intent(this, StudyPage.class);
+            intent.putExtra("SELECTEDTEST", selectedTest);
             startActivity(intent);
         }
     }
@@ -154,19 +182,12 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     //Which study
     public void whichStudy(){
         if(MainActivity.mode == 0){
-
+            correctButton.setVisibility(View.INVISIBLE);
+            wrongButton.setVisibility(View.INVISIBLE);
         }
         if(MainActivity.mode == 1){
-            for (Deck t: currentTest.getDeckList()){
-                if(Objects.equals(t.getName(), "Correct"))
-                    return;
-            }
-            currentTest.addFrontDeck(new Deck("Correct"));
-            currentTest.addFrontDeck(new Deck("Wrong"));
-            MainActivity.userTests.get(selectedTest)
-                    .addFrontDeck(new Deck("Correct"));
-            MainActivity.userTests.get(selectedTest)
-                    .addFrontDeck(new Deck("Wrong"));
+            correctButton.setVisibility(View.VISIBLE);
+            wrongButton.setVisibility(View.VISIBLE);
         }
     }
 

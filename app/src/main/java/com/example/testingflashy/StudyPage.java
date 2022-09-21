@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Objects;
 import java.util.Random;
 
 public class StudyPage extends AppCompatActivity {
@@ -45,10 +46,23 @@ public class StudyPage extends AppCompatActivity {
     // gets a list of answer so the user has wrong answer
     private List<String> wrongAnswers;
 
+    // Var for the current question
+    Question currentQuestion;
+
+    // gets the current selected test
+    private int selectedTest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_page);
+
+        // Clears their correct and incorrect cards
+        MainActivity.userTests.get(selectedTest).getCorrectCards().clear();
+        MainActivity.userTests.get(selectedTest).getWrongCards().clear();
+
+        // gets the selected test from last page
+        selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
 
         // makes the session deck and fills it with all the cards to be used
         sessionDeck = new Deck("Session Deck");
@@ -94,7 +108,7 @@ public class StudyPage extends AppCompatActivity {
         if(currentQuestionNumber <= sessionDeck.getCardCount()) {
 
             //gets the first question ready and displayed
-            Question currentQuestion = sessionDeck.getFirstCard();
+            currentQuestion = sessionDeck.getFirstCard();
             sessionDeck.removeFirstCard();
 
             questionCountView.setText("Question: " + currentQuestionNumber + "/" + TestPage.studyDeck.getCardCount());
@@ -149,8 +163,10 @@ public class StudyPage extends AppCompatActivity {
     public void checkAnswer1(){
         if(correctAnswer == 1){
             messagePopUp("You rock that was correct");
+            MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
         }else{
             messagePopUp("Sorry that wasn't it");
+            MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
         }
         setPageQuestion();
     }
@@ -159,8 +175,10 @@ public class StudyPage extends AppCompatActivity {
     public void checkAnswer2(){
         if(correctAnswer == 2){
             messagePopUp("Correct answer Super Star");
+            MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
         }else{
             messagePopUp("You need to practice a little more on this question");
+            MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
         }
         setPageQuestion();
     }
@@ -169,8 +187,10 @@ public class StudyPage extends AppCompatActivity {
     public void checkAnswer3(){
         if(correctAnswer == 3){
             messagePopUp("CORRECT amazing");
+            MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
         }else{
             messagePopUp("Incorrect study a little more");
+            MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
         }
         setPageQuestion();
     }

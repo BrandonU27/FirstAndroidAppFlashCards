@@ -41,4 +41,9 @@ public class Deck implements Serializable {
     public Question getFirstCard(){return cardDeck.get(0);}
 
     public void removeFirstCard(){cardDeck.remove(0);}
+
+    public void clear(){
+        cardDeck.clear();
+        cardCount = 0;
+    }
 }
