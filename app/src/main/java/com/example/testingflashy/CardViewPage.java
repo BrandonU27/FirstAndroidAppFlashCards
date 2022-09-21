@@ -9,14 +9,6 @@ import com.example.testingflashy.TestClasses.Question;
 
 public class CardViewPage extends AppCompatActivity {
 
-    // gets the views for the front of the card and the back
-    private TextView frontCard;
-    private TextView backCard;
-
-    // gets the strings for the question and answer of the card that was clicked
-    private String question;
-    private String answer;
-
     Question currentQuestion;
 
     @Override
@@ -25,13 +17,15 @@ public class CardViewPage extends AppCompatActivity {
         setContentView(R.layout.activity_card_view_page);
 
         // gets the views from layout
-        frontCard = findViewById(R.id.front_card);
-        backCard = findViewById(R.id.back_card);
+        // gets the views for the front of the card and the back
+        TextView frontCard = findViewById(R.id.front_card);
+        TextView backCard = findViewById(R.id.back_card);
 
         // sees which card the user clicked on
         currentQuestion = (Question) getIntent().getSerializableExtra("CARD");
-        question = currentQuestion.getQuestion();
-        answer = currentQuestion.getAnswer();
+        // gets the strings for the question and answer of the card that was clicked
+        String question = currentQuestion.getQuestion();
+        String answer = currentQuestion.getAnswer();
 
         // sets the texts of the front and back
         frontCard.setText(question);

@@ -2,9 +2,7 @@ package com.example.testingflashy;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -49,12 +47,6 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     private String selected;
     private int selectedTest;
 
-    // Button for adding test
-    private Button addButton;
-    private ImageButton settingsButton;
-    // Button for going to past tests
-    private Button archiveButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,13 +66,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format((new Date()));
         dateView.setText(date);
 
-        ///////////////////////EXAMPLE DATA WILL DELTE FINAL BUILD
-        userTests.add(new Test("EXAMPLE TEST", "02/21/23", "5:00am"));
-        userTests.get(0).addDeck(new Deck("SAMPLE DECK"));
-        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a flying animal?", "Bat"));
-        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a type of bear?", "Polar Bear"));
-        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a bug?", "Ant"));
-        userNames.add(userTests.get(0).getTitle());
+        ///////////////////////EXAMPLE DATA WILL DELETE FINAL BUILD
+        sampleData();
         //////////////////////////////////////////////////////////
 
         // Adding the list as a var
@@ -89,16 +76,18 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         updateList();
 
         // Button that goes to the past tests
-        archiveButton = findViewById(R.id.archiveButton);
+        // Button for going to past tests
+        Button archiveButton = findViewById(R.id.archiveButton);
         archiveButton.setOnClickListener(view -> toArchivePage());
 
         //Opens the settings Dialog
-        settingsButton = findViewById(R.id.settingsButton);
+        ImageButton settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(view -> toSettingPage());
 
         // Makes the add test dialog box open
         //First gets the id of the button and adds to var
-        addButton = findViewById(R.id.addButton);
+        // Button for adding test
+        Button addButton = findViewById(R.id.addButton);
         // Creates a click listener to see when it is clicked
         addButton.setOnClickListener(view -> addTestDialog());
 
@@ -172,12 +161,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         builder.setTitle("Results");
         builder.setMessage(_message);
 
-        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("ok", (dialogInterface, i) -> dialogInterface.cancel());
         builder.show();
     }
 
@@ -194,4 +178,26 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
             mode = 2;
         }
     }
+
+    public void sampleData(){
+        userTests.add(new Test("EXAMPLE TEST", "02/21/23", "5:00am"));
+        userTests.get(0).addDeck(new Deck("SAMPLE DECK"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a flying animal?", "Bat"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a type of bear?", "Polar Bear"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a bug?", "Ant"));
+        userNames.add(userTests.get(0).getTitle());
+
+        userTests.add(new Test("History", "11/02/22", "3:00pm"));
+        userTests.get(1).addDeck(new Deck("WW1"));
+        userTests.get(1).addDeck(new Deck("WW2"));
+        userTests.get(1).addDeck(new Deck("Cold War"));
+        userTests.get(1).getDeckList().get(0).addCard(new Question("Who was the main country for the East side fights?", "Germany, UK, France, USA"));
+        userTests.get(1).getDeckList().get(0).addCard(new Question("What year was the last major year of the war?", "1945"));
+        userNames.add(userTests.get(1).getTitle());
+
+        userTests.add(new Test("Project and Portfolio", "9/22/22", "9:00pm"));
+        userTests.get(2).getDeckList().add(new Deck("Empty Deck Test"));
+        userNames.add(userTests.get(2).getTitle());
+    }
+
 }

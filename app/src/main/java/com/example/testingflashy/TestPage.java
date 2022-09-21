@@ -3,7 +3,6 @@ package com.example.testingflashy;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,14 +22,8 @@ import java.util.Objects;
 
 public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDeckDialogListener{
 
-    // Study Button and add button
-    private Button addButton;
-
     // Test information
     public Test currentTest;
-    private TextView titleView;
-    private TextView dateView;
-    private TextView timeView;
 
     //Deck vars to help the listview
     public static List<Deck> testsDecks;
@@ -96,7 +89,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         updateList();
 
         // get the add deck button and call the dialog to open
-        addButton = findViewById(R.id.addDeckButton);
+        // Study Button and add button
+        Button addButton = findViewById(R.id.addDeckButton);
         addButton.setOnClickListener(view -> openAddDeckDialog());
 
         // Makes the decks in list clickable for the user to click on
@@ -171,11 +165,11 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // Create page titles
     public void createTitle(){
-        titleView = findViewById(R.id.testName);
+        TextView titleView = findViewById(R.id.testName);
         titleView.setText(currentTest.getTitle());
-        dateView = findViewById(R.id.testDate);
+        TextView dateView = findViewById(R.id.testDate);
         dateView.setText(currentTest.getDate());
-        timeView = findViewById(R.id.testTime);
+        TextView timeView = findViewById(R.id.testTime);
         timeView.setText(currentTest.getTime());
     }
 
@@ -199,12 +193,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         builder.setTitle("Results");
         builder.setMessage(_message);
 
-        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("ok", (dialogInterface, i) -> dialogInterface.cancel());
         builder.show();
     }
 

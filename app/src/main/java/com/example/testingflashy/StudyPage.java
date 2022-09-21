@@ -57,12 +57,12 @@ public class StudyPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_page);
 
+        // gets the selected test from last page
+        selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
+
         // Clears their correct and incorrect cards
         MainActivity.userTests.get(selectedTest).getCorrectCards().clear();
         MainActivity.userTests.get(selectedTest).getWrongCards().clear();
-
-        // gets the selected test from last page
-        selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
 
         // makes the session deck and fills it with all the cards to be used
         sessionDeck = new Deck("Session Deck");
