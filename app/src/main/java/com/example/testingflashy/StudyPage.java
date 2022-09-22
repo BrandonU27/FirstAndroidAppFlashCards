@@ -60,14 +60,23 @@ public class StudyPage extends AppCompatActivity {
         // gets the selected test from last page
         selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
 
-        // Clears their correct and incorrect cards
-        MainActivity.userTests.get(selectedTest).getCorrectCards().clear();
-        MainActivity.userTests.get(selectedTest).getWrongCards().clear();
-
         // makes the session deck and fills it with all the cards to be used
         sessionDeck = new Deck("Session Deck");
-        for(Question q : TestPage.studyDeck.getCardDeck()){
-            sessionDeck.addCard(q);
+        if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "Study")) {
+            // Clears their correct and incorrect cards
+            MainActivity.userTests.get(selectedTest).getCorrectCards().clear();
+            MainActivity.userTests.get(selectedTest).getWrongCards().clear();
+            for (Question q : TestPage.studyDeck.getCardDeck()) {
+                sessionDeck.addCard(q);
+            }
+        }
+        if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "Wrong")){
+            // Clears the wrong list only
+            MainActivity.userTests.get(selectedTest).getWrongCards().clear();
+            Deck copyWrongDeck = (Deck) getIntent().getSerializableExtra("WRONGDECK");
+            for (Question q : copyWrongDeck.getCardDeck()){
+                sessionDeck.addCard(q);
+            }
         }
 
         // gets all the views from the layout
@@ -111,7 +120,12 @@ public class StudyPage extends AppCompatActivity {
             currentQuestion = sessionDeck.getFirstCard();
             sessionDeck.removeFirstCard();
 
-            questionCountView.setText("Question: " + currentQuestionNumber + "/" + TestPage.studyDeck.getCardCount());
+            if(Objects.equals((String)getIntent().getSerializableExtra("WHICH"), "Study")) {
+                questionCountView.setText("Question: " + currentQuestionNumber + "/" + TestPage.studyDeck.getCardCount());
+            }else{
+                Deck copyWrongDeck = (Deck) getIntent().getSerializableExtra("WRONGDECK");
+                questionCountView.setText("Question: " + currentQuestionNumber + "/" + copyWrongDeck.getCardCount());
+            }
 
             questionView.setText(currentQuestion.getQuestion());
 
@@ -150,6 +164,7 @@ public class StudyPage extends AppCompatActivity {
             option1Button.setVisibility(View.INVISIBLE);
             option2Button.setVisibility(View.INVISIBLE);
             option3Button.setVisibility(View.INVISIBLE);
+
         }
     }
 

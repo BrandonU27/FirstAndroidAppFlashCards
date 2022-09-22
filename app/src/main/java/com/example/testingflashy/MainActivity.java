@@ -185,6 +185,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         userTests.get(0).getDeckList().get(0).addCard(new Question("What is a flying animal?", "Bat"));
         userTests.get(0).getDeckList().get(0).addCard(new Question("What is a type of bear?", "Polar Bear"));
         userTests.get(0).getDeckList().get(0).addCard(new Question("What is a bug?", "Ant"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("What is a swimming animal?", "fish"));
+        userTests.get(0).getDeckList().get(0).addCard(new Question("WORST ANIMAL?", "spider"));
         userNames.add(userTests.get(0).getTitle());
 
         userTests.add(new Test("History", "11/02/22", "3:00pm"));

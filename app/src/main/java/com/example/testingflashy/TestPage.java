@@ -146,6 +146,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         else {
             Intent intent = new Intent(this, StudyPage.class);
             intent.putExtra("SELECTEDTEST", selectedTest);
+            intent.putExtra("WHICH", "Study");
             startActivity(intent);
         }
     }

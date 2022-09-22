@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -55,10 +56,20 @@ public class CorrectWrongDeck extends AppCompatActivity {
         wrongNames = new ArrayList<>();
 
         updatePage();
+        addcorrectwrongButton.setOnClickListener(view -> toStudy() );
     }
 
     public void toStudy(){
-
+        if(currentTest.getWrongCards().getCardCount() < 3){
+            messagePopUp("Sorry but you didn't get enough wrong to study them.\nYou need at least 3.");
+        }else{
+            Intent intent = new Intent(this, StudyPage.class);
+            intent.putExtra("SELECTEDTEST", getIntent().getSerializableExtra("SELECTEDTEST"));
+            intent.putExtra("WRONGDECK", MainActivity.userTests.get(selectedTest).getWrongCards());
+            intent.putExtra("WHICH", "Wrong");
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void updatePage(){
@@ -70,6 +81,8 @@ public class CorrectWrongDeck extends AppCompatActivity {
             for (Question q: currentTest.getCorrectCards().getCardDeck()){
                 correctNames.add(q.getQuestion());
             }
+            addcorrectwrongButton.setVisibility(View.INVISIBLE);
+            addcorrectwrongButton.setClickable(false);
             updateCorrectList();
         }else {
             correctwrongTitle.setText("Wrong Deck");
