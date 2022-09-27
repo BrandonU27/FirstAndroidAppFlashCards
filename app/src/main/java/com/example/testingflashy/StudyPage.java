@@ -1,27 +1,19 @@
 package com.example.testingflashy;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Objects;
 import java.util.Random;
 
@@ -144,16 +136,16 @@ public class StudyPage extends AppCompatActivity {
                     option3Button.setText(tempWrong);
                     break;
                 case 2:
-                    while(tempWrong == currentQuestion.getAnswer()){tempWrong = wronganswerAdd();}
+                    while(Objects.equals(tempWrong, currentQuestion.getAnswer())){tempWrong = wronganswerAdd();}
                     option1Button.setText(tempWrong);
                     option2Button.setText(currentQuestion.getAnswer());
                     while(tempWrong == option2Button.getText() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
                     option3Button.setText(tempWrong);
                     break;
                 case 3:
-                    while(tempWrong == currentQuestion.getAnswer()){tempWrong = wronganswerAdd();}
+                    while(Objects.equals(tempWrong, currentQuestion.getAnswer())){tempWrong = wronganswerAdd();}
                     option1Button.setText(tempWrong);
-                    while(tempWrong == currentQuestion.getAnswer() || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
+                    while(Objects.equals(tempWrong, currentQuestion.getAnswer()) || tempWrong == option1Button.getText()){tempWrong = wronganswerAdd();}
                     option2Button.setText(tempWrong);
                     option3Button.setText(currentQuestion.getAnswer());
                     break;
@@ -222,12 +214,7 @@ public class StudyPage extends AppCompatActivity {
         builder.setTitle("Results");
         builder.setMessage(_message);
 
-        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("ok", (dialogInterface, i) -> dialogInterface.cancel());
         builder.show();
     }
 

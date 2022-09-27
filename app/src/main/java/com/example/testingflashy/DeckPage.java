@@ -29,23 +29,11 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     // Gets all the card names
     private List<String> cardNames;
 
-    // Gets the textview from the xml page
-    private TextView title;
-    private TextView createdOn;
-    private TextView cardCount;
-
-    // Just for the card count
-    private int intCardCount;
-    private String stringCardCount;
-
     // Keeps track on which card the user selected
     private String select;
     // Gets the main selected numbers
     private int selectedTest;
     private int selectedDeck;
-
-    // button for adding card
-    private Button addCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +62,8 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         SetTitles();
 
         // gets the add button
-        addCard = findViewById(R.id.addCardButton);
+        // button for adding card
+        Button addCard = findViewById(R.id.addCardButton);
         addCard.setOnClickListener(view -> showAddCardDialog());
 
         // Makes the cards in list clickable for the suer to click on
@@ -87,15 +76,17 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     // Sets all the views and titles
     public void SetTitles(){
         // title
-        title = findViewById(R.id.deckName);
+        // Gets the textview from the xml page
+        TextView title = findViewById(R.id.deckName);
         title.setText(currentDeck.getName());
         //created on
-        createdOn = findViewById(R.id.deckCreatedOn);
+        TextView createdOn = findViewById(R.id.deckCreatedOn);
         createdOn.setText("Created On: " + currentDeck.getCreatedOn());
         // card cont
-        cardCount = findViewById(R.id.deckCardCount);
-        intCardCount = currentDeck.getCardCount();
-        stringCardCount = Integer.toString(intCardCount);
+        TextView cardCount = findViewById(R.id.deckCardCount);
+        // Just for the card count
+        int intCardCount = currentDeck.getCardCount();
+        String stringCardCount = Integer.toString(intCardCount);
         cardCount.setText("Cards: " + stringCardCount);
 
     }
