@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_adding_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_archive_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_card_view_page.xml" value="0.25" />
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_card_view_page.xml" value="0.33" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_correct_wrong_deck.xml" value="0.33" />
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_correct_wrong_study.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_deck_page.xml" value="0.33" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_question_page.xml" value="0.36666666666666664" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/messagedialog.xml" value="0.2857789855072464" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/settingsdialog.xml" value="0.22" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/test_page.xml" value="0.25" />
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
