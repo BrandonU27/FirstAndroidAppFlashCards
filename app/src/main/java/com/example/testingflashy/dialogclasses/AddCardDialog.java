@@ -18,6 +18,10 @@ import com.example.testingflashy.R;
 public class AddCardDialog extends AppCompatDialogFragment {
     private EditText editTextQuestion;
     private  EditText editTextAnswer;
+    private EditText editTextQuestion2;
+    private  EditText editTextAnswer2;
+    private EditText editTextQuestion3;
+    private  EditText editTextAnswer3;
 
     private AddCardDialogListener listener;
     @NonNull
@@ -41,12 +45,22 @@ public class AddCardDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String question = editTextQuestion.getText().toString();
                         String answer = editTextAnswer.getText().toString();
+                        String question2 = editTextQuestion2.getText().toString();
+                        String answer2 = editTextAnswer2.getText().toString();
+                        String question3 = editTextQuestion3.getText().toString();
+                        String answer3 = editTextAnswer3.getText().toString();
 
                         listener.makeCard(question, answer);
+                        listener.makeCard(question2, answer2);
+                        listener.makeCard(question3,answer3);
                     }
                 });
         editTextQuestion = view.findViewById(R.id.question_input);
         editTextAnswer = view.findViewById(R.id.answer_input);
+        editTextQuestion2 = view.findViewById(R.id.question2_input);
+        editTextAnswer2 = view.findViewById(R.id.answer2_input);
+        editTextQuestion3 = view.findViewById(R.id.question3_input);
+        editTextAnswer3 = view.findViewById(R.id.answer3_input);
 
         return builder.create();
     }

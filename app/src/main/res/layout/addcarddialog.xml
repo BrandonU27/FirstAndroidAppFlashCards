@@ -4,20 +4,69 @@
     android:layout_height="match_parent"
     android:padding="15dp">
 
-    <EditText
-        android:id="@+id/question_input"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Question"
-        android:textSize="20sp" />
+        android:text="Please enter 3 different ways to ask a question with 3 different ways to answer the question!"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/answer_input"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Answer"
-        android:textSize="20sp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+            <EditText
+                android:id="@+id/question_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Question"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/answer_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Answer"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/question2_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Question 2" />
+
+            <EditText
+                android:id="@+id/answer2_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Answer 2" />
+
+            <EditText
+                android:id="@+id/question3_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Question 3" />
+
+            <EditText
+                android:id="@+id/answer3_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Answer 3" />
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </LinearLayout>

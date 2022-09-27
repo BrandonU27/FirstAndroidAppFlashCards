@@ -180,8 +180,10 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
         // work to get the percentage done of the test
         percentView = findViewById(R.id.percentTestView);
-        float point = 100/studyDeck.getCardCount();
-        percentView.setText((float) point * currentTest.getCorrectCards().getCardCount() + "% Done");
+        if(studyDeck.getCardCount() != 0) {
+            float point = 100 / studyDeck.getCardCount();
+            percentView.setText((float) point * currentTest.getCorrectCards().getCardCount() + "% Done");
+        }
     }
 
     //Which study
