@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Deck;
@@ -48,6 +49,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // percent view
     public static TextView percentView;
+    public static ProgressBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,6 +185,10 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         if(studyDeck.getCardCount() != 0) {
             float point = 100 / studyDeck.getCardCount();
             percentView.setText((float) point * currentTest.getCorrectCards().getCardCount() + "% Done");
+
+            bar = findViewById(R.id.progressBar);
+            bar.setMax(100);
+            bar.setProgress((int) point * currentTest.getCorrectCards().getCardCount());
         }
     }
 
@@ -192,12 +198,14 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             correctButton.setVisibility(View.INVISIBLE);
             wrongButton.setVisibility(View.INVISIBLE);
             percentView.setVisibility(View.INVISIBLE);
+            bar.setVisibility(View.INVISIBLE);
 
         }
         if(MainActivity.mode == 1){
             correctButton.setVisibility(View.VISIBLE);
             wrongButton.setVisibility(View.VISIBLE);
             percentView.setVisibility(View.VISIBLE);
+            bar.setVisibility(View.VISIBLE);
         }
     }
 

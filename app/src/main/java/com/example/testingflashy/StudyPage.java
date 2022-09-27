@@ -3,6 +3,7 @@ package com.example.testingflashy;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -158,9 +159,10 @@ public class StudyPage extends AppCompatActivity {
             option3Button.setVisibility(View.INVISIBLE);
 
             // update the percent of the test
-            int point = 100/TestPage.studyDeck.getCardCount();
+            float point = 100/TestPage.studyDeck.getCardCount();
             TestPage.percentView.setText((float) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount() + "% Done");
 
+            TestPage.bar.setProgress((int) point*MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount());
         }
     }
 

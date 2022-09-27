@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Question"
+                android:hint="Main Question"
                 android:textSize="20sp" />
 
             <EditText
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Answer"
+                android:hint="Main answer"
                 android:textSize="20sp" />
 
             <EditText
@@ -42,28 +42,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Question 2" />
+                android:hint="Second way to ask question" />
 
             <EditText
                 android:id="@+id/answer2_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Answer 2" />
+                android:hint="Second way to answer" />
 
             <EditText
                 android:id="@+id/question3_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Question 3" />
+                android:hint="Third way to ask question" />
 
             <EditText
                 android:id="@+id/answer3_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Answer 3" />
+                android:hint="Third way to answer" />
         </LinearLayout>
 
     </ScrollView>
