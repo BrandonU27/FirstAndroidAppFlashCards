@@ -46,6 +46,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     private Button correctButton;
     private Button wrongButton;
 
+    // percent view
+    public static TextView percentView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +63,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
         // Gets which test that the user has clicked on
         currentTest = (Test)getIntent().getSerializableExtra("TEST");
-        // Sets the title date and time at the top to the test the user clicked on
-        createTitle();
+
 
         // Create Study deck
         studyDeck = new Deck("Study Deck");
@@ -70,6 +72,9 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
                 studyDeck.addCard(q);
             }
         }
+
+        // Sets the title date and time at the top to the test the user clicked on
+        createTitle();
 
         //checks which mode
         whichStudy();
@@ -172,6 +177,11 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         dateView.setText(currentTest.getDate());
         TextView timeView = findViewById(R.id.testTime);
         timeView.setText(currentTest.getTime());
+
+        // work to get the percentage done of the test
+        percentView = findViewById(R.id.percentTestView);
+        float point = 100/studyDeck.getCardCount();
+        percentView.setText((float) point * currentTest.getCorrectCards().getCardCount() + "% Done");
     }
 
     //Which study
@@ -179,10 +189,13 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         if(MainActivity.mode == 0){
             correctButton.setVisibility(View.INVISIBLE);
             wrongButton.setVisibility(View.INVISIBLE);
+            percentView.setVisibility(View.INVISIBLE);
+
         }
         if(MainActivity.mode == 1){
             correctButton.setVisibility(View.VISIBLE);
             wrongButton.setVisibility(View.VISIBLE);
+            percentView.setVisibility(View.VISIBLE);
         }
     }
 

@@ -165,6 +165,10 @@ public class StudyPage extends AppCompatActivity {
             option2Button.setVisibility(View.INVISIBLE);
             option3Button.setVisibility(View.INVISIBLE);
 
+            // update the percent of the test
+            int point = 100/TestPage.studyDeck.getCardCount();
+            TestPage.percentView.setText((float) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount() + "% Done");
+
         }
     }
 
