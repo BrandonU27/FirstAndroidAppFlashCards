@@ -3,19 +3,17 @@ package com.example.testingflashy.TestClasses;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
 public class Deck implements Serializable {
 
-    private String name;
-    private String createdOn;
+    private final String name;
+    private final String createdOn;
     private int cardCount;
-    private List<Question> cardDeck;
+    private final List<Question> cardDeck;
 
     public Deck(String _name){
         name = _name;
