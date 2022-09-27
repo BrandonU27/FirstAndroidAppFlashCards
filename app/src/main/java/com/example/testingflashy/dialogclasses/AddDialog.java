@@ -3,12 +3,12 @@ package com.example.testingflashy.dialogclasses;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.testingflashy.R;
@@ -20,29 +20,24 @@ public class AddDialog extends AppCompatDialogFragment {
 
     private AddDialogListener listener;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.addtestdialog, null);
 
         builder.setView(view)
                 .setTitle("Add Test")
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                .setNegativeButton("cancel", (dialogInterface, i) -> {
 
-                    }
                 })
-                .setPositiveButton("add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String title = editTextName.getText().toString();
-                        String date = editTextDate.getText().toString();
-                        String time = editTextTime.getText().toString();
-                        listener.makeTest(title, date, time);
-                    }
+                .setPositiveButton("add", (dialogInterface, i) -> {
+                    String title = editTextName.getText().toString();
+                    String date = editTextDate.getText().toString();
+                    String time = editTextTime.getText().toString();
+                    listener.makeTest(title, date, time);
                 });
         editTextName = view.findViewById(R.id.name_input);
         editTextDate = view.findViewById(R.id.date_input);
@@ -52,13 +47,13 @@ public class AddDialog extends AppCompatDialogFragment {
     }
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(@NonNull Context context){
         super.onAttach(context);
 
         try {
             listener = (AddDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() +
+            throw new ClassCastException(context +
                     "must implement AddDialogListener");
         }
     }

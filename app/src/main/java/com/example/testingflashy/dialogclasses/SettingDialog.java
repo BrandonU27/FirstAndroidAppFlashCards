@@ -3,20 +3,16 @@ package com.example.testingflashy.dialogclasses;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.testingflashy.R;
-
-import java.util.ArrayList;
 
 public class SettingDialog extends AppCompatDialogFragment {
 
@@ -31,26 +27,20 @@ public class SettingDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.settingsdialog, null);
 
         builder.setView(view)
                 .setTitle("Settings Page")
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                .setNegativeButton("cancel", (dialogInterface, i) -> {
 
-                    }
                 })
-                .setPositiveButton("apply", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    Boolean check1 = option1.isChecked();
-                    Boolean check2 = option2.isChecked();
-                    Boolean check3 = option3.isChecked();
+                .setPositiveButton("apply", (dialogInterface, i) -> {
+                Boolean check1 = option1.isChecked();
+                Boolean check2 = option2.isChecked();
+                Boolean check3 = option3.isChecked();
 
-                    listener.studyChange(check1, check2, check3);
-                    }
+                listener.studyChange(check1, check2, check3);
                 });
         option1 = view.findViewById(R.id.option1);
         option2 = view.findViewById(R.id.option2);
@@ -66,7 +56,7 @@ public class SettingDialog extends AppCompatDialogFragment {
         try {
             listener = (SettingDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() +
+            throw new ClassCastException(context +
                     "must implement listener");
         }
     }

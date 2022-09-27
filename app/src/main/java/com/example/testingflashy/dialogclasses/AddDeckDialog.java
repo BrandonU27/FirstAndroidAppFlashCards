@@ -3,9 +3,7 @@ package com.example.testingflashy.dialogclasses;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -26,24 +24,18 @@ public class AddDeckDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.adddeckdialog, null);
 
         builder.setView(view)
                 .setTitle("Add Deck")
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                .setNegativeButton("cancel", (dialogInterface, i) -> {
 
-                    }
                 })
-                .setPositiveButton("add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String title = editTextDeckTitle.getText().toString();
-                        listener.makeDeck(title);
+                .setPositiveButton("add", (dialogInterface, i) -> {
+                    String title = editTextDeckTitle.getText().toString();
+                    listener.makeDeck(title);
 
-                    }
                 });
         editTextDeckTitle = view.findViewById(R.id.deck_name_input);
 
@@ -57,7 +49,7 @@ public class AddDeckDialog extends AppCompatDialogFragment {
         try {
             listener = (AddDeckDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() +
+            throw new ClassCastException(context +
                     "must implement DialogListener");
         }
     }
