@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 0 = no study on
     // 1 = daily correct incorrect pile
     // 2 = ?????????
+    // 5 = archive mode
     public static int mode = 0;
 
     // All these variables are used to make the list view work properly
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         //////////////////////////////////////////////////////////
 
         // Adding the list as a var
-        homeL = findViewById(R.id.homeList);
+        homeL = findViewById(R.id.pastList);
         // Calls method to update the list
         updateList();
 
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
             messagePopUp("You currently have no tests that pasted.\nAs time goes by you'll start to fill this page up.");
         }
         else {
+            mode = 5;
             Intent intent = new Intent(this, ArchivePage.class);
             startActivity(intent);
         }
@@ -200,6 +202,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         userTests.add(new Test("Project and Portfolio", "9/22/22", "9:00pm"));
         userTests.get(2).getDeckList().add(new Deck("Empty Deck Test"));
         userNames.add(userTests.get(2).getTitle());
+
+        pastTests.add(new Test("Chem Test", "01/22/22", "8:00am"));
     }
 
 }

@@ -42,6 +42,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
     // Study deck
     public static Deck studyDeck;
+    private Button addButton;
+    private Button studyButton;
 
     // Correct and wrong deck buttons
     private Button correctButton;
@@ -97,7 +99,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
         // get the add deck button and call the dialog to open
         // Study Button and add button
-        Button addButton = findViewById(R.id.addDeckButton);
+        addButton = findViewById(R.id.addDeckButton);
         addButton.setOnClickListener(view -> openAddDeckDialog());
 
         // Makes the decks in list clickable for the user to click on
@@ -108,7 +110,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         });
 
         // Makes study button to take user to study
-        Button studyButton = findViewById(R.id.studyButton);
+        studyButton = findViewById(R.id.studyButton);
         studyButton.setOnClickListener(view -> toStudyPage());
 
         correctButton.setOnClickListener(view -> toCorrect());
@@ -211,6 +213,12 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             wrongButton.setVisibility(View.VISIBLE);
             percentView.setVisibility(View.VISIBLE);
             bar.setVisibility(View.VISIBLE);
+        }
+        if(MainActivity.mode == 5){
+            correctButton.setVisibility(View.INVISIBLE);
+            wrongButton.setVisibility(View.INVISIBLE);
+            percentView.setVisibility(View.INVISIBLE);
+            bar.setVisibility(View.INVISIBLE);
         }
     }
 
