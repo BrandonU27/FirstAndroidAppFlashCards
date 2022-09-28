@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
+import com.example.testingflashy.TestClasses.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -159,11 +160,15 @@ public class StudyPage extends AppCompatActivity {
             option3Button.setVisibility(View.INVISIBLE);
 
             // update the percent of the test
-            float point = 100/TestPage.studyDeck.getCardCount();
-            TestPage.percentView.setText((float) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount() + "% Done");
-
-            TestPage.bar.setProgress((int) point*MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount());
+            updatePercentage();
         }
+    }
+
+    public void updatePercentage(){
+        float point = 100/ TestPage.studyDeck.getCardCount();
+        TestPage.percentView.setText((float) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount() + "% Done");
+
+        TestPage.bar.setProgress((int) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount());
     }
 
     // Gets a random wrong answer to be added to the test

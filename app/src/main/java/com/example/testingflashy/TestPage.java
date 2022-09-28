@@ -172,24 +172,29 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Create page titles
-    public void createTitle(){
+    public void createTitle() {
         TextView titleView = findViewById(R.id.testName);
         titleView.setText(currentTest.getTitle());
         TextView dateView = findViewById(R.id.testDate);
         dateView.setText(currentTest.getDate());
         TextView timeView = findViewById(R.id.testTime);
         timeView.setText(currentTest.getTime());
-
-        // work to get the percentage done of the test
         percentView = findViewById(R.id.percentTestView);
-        if(studyDeck.getCardCount() != 0) {
-            float point = 100 / studyDeck.getCardCount();
-            percentView.setText((float) point * currentTest.getCorrectCards().getCardCount() + "% Done");
+        bar = findViewById(R.id.progressBar);
 
-            bar = findViewById(R.id.progressBar);
-            bar.setMax(100);
-            bar.setProgress((int) point * currentTest.getCorrectCards().getCardCount());
+        if(Objects.equals(0, studyDeck.getCardCount())){
+            percentView.setText("100% Done");
+            bar.setProgress(100);
+        }else{
+            getProgress();
         }
+    }
+
+    // Gets the progress of the test
+    public void getProgress(){
+        float point = 100/studyDeck.getCardCount();
+        percentView.setText((float)point * currentTest.getCorrectCards().getCardCount() + "% Done");
+        bar.setProgress((int) point * currentTest.getCorrectCards().getCardCount());
     }
 
     //Which study
