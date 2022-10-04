@@ -231,8 +231,6 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             bar.setVisibility(View.INVISIBLE);
             addButton.setVisibility(View.INVISIBLE);
             addButton.setClickable(false);
-            studyButton.setVisibility(View.INVISIBLE);
-            studyButton.setClickable(false);
 
         }
     }

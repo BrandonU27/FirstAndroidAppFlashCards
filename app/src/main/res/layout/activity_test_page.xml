@@ -4,154 +4,198 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/test_page_background"
     tools:context=".TestPage">
 
-    <TextView
-        android:id="@+id/testName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Sample Title"
-        android:textAlignment="center"
-        android:textSize="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/testDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="xx/xx/xxxx"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toStartOf="@+id/testTime"
-        app:layout_constraintHorizontal_bias="0.178"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testName"
-        app:layout_constraintVertical_bias="0.214" />
+        <TextView
+            android:id="@+id/percentTestView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0% Done"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/testName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.291" />
 
-    <TextView
-        android:id="@+id/testTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="x:xx pm"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testName"
-        app:layout_constraintVertical_bias="0.214" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="380dp"
+            android:layout_height="14dp"
+            android:max="100"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/testName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976" />
+        <TextView
+            android:id="@+id/testName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Sample Title"
+            android:textAlignment="center"
+            android:textSize="48dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.086" />
 
-    <Button
-        android:id="@+id/addDeckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:text="Add Deck"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testName"
-        app:layout_constraintVertical_bias="0.906" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="40dp">
+            <TextView
+                android:id="@+id/testDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:text="xx/xx/xxxx"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toStartOf="@+id/testTime"
+                app:layout_constraintHorizontal_bias="0.178"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/testName"
+                app:layout_constraintVertical_bias="0.214" />
 
-    <Button
-        android:id="@+id/studyButton"
-        android:layout_width="124dp"
-        android:layout_height="60dp"
-        android:text="Study"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1">
+            </Space>
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testName"
-        app:layout_constraintVertical_bias="0.237" />
+            <TextView
+                android:id="@+id/testTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x:xx pm"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.818"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/testName"
+                app:layout_constraintVertical_bias="0.214" />
+        </LinearLayout>
 
-    <ListView
-        android:id="@+id/testPageList"
-        android:layout_width="414dp"
-        android:layout_height="387dp"
-        app:layout_constraintBottom_toTopOf="@+id/wrongDeckButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintVertical_bias="0.0" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:paddingStart="40dp"
+           android:paddingEnd="40dp">
 
-    <Button
-        android:id="@+id/correctDeckButton"
-        android:layout_width="210dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="4dp"
-        android:text="Correct"
-        android:textSize="30dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/wrongDeckButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+           <androidx.appcompat.widget.AppCompatButton
+               android:id="@+id/addDeckButton"
+               android:layout_width="140dp"
+               android:layout_height="50dp"
+               android:text="Add Deck"
+               android:textSize="20sp"
+               android:background="@drawable/mybutton"
+               android:layout_gravity="center"
+               app:layout_constraintBottom_toTopOf="@+id/divider2"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.855"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/testName"
+               app:layout_constraintVertical_bias="0.906" />
 
-    <Button
-        android:id="@+id/wrongDeckButton"
-        android:layout_width="210dp"
-        android:layout_height="87dp"
-        android:text="Wrong"
-        android:textSize="30dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+           <Space
+               android:layout_width="wrap_content"
+               android:layout_height="1dp"
+               android:layout_weight="1">
+           </Space>
 
-    <TextView
-        android:id="@+id/percentTestView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="0% Done"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/testName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+           <androidx.appcompat.widget.AppCompatButton
+               android:id="@+id/studyButton"
+               android:layout_width="140dp"
+               android:layout_height="50dp"
+               android:text="Study"
+               android:textSize="20sp"
+               android:background="@drawable/mybutton"
+               android:layout_gravity="center"
+               app:layout_constraintBottom_toTopOf="@+id/divider2"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.17"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintVertical_bias="0.97" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="326dp"
-        android:layout_height="14dp"
-        android:max="100"
-        app:layout_constraintBottom_toTopOf="@+id/testName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+       </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+        </Space>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/testName"
+            app:layout_constraintVertical_bias="0.237" />
+
+        <ListView
+            android:id="@+id/testPageList"
+            android:layout_width="414dp"
+            android:layout_height="317dp"
+            app:layout_constraintBottom_toTopOf="@+id/wrongDeckButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="183dp"
+            android:orientation="horizontal"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/correctDeckButton"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:text="Correct"
+                android:background="@drawable/mybutton"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"></Space>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/wrongDeckButton"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:text="Wrong"
+                android:background="@drawable/mybutton"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
