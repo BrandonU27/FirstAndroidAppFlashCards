@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 2 = ?????????
     // 5 = archive mode
     public static int mode = 0;
+    public static int beforeArch = 0;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
             messagePopUp("You currently have no tests that pasted.\nAs time goes by you'll start to fill this page up.");
         }
         else {
+            beforeArch = mode;
             mode = 5;
             Intent intent = new Intent(this, ArchivePage.class);
             startActivity(intent);

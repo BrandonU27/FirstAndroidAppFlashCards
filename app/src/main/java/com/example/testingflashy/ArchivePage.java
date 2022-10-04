@@ -64,7 +64,7 @@ public class ArchivePage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        MainActivity.mode = 0;
+        MainActivity.mode = MainActivity.beforeArch;
         finish();
     }
 }

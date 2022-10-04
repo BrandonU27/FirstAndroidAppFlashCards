@@ -77,6 +77,10 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             }
         }
 
+        //creates the add deck button and the study button
+        addButton = findViewById(R.id.addDeckButton);
+        studyButton = findViewById(R.id.studyButton);
+
         // Sets the title date and time at the top to the test the user clicked on
         createTitle();
 
@@ -99,7 +103,6 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
         // get the add deck button and call the dialog to open
         // Study Button and add button
-        addButton = findViewById(R.id.addDeckButton);
         addButton.setOnClickListener(view -> openAddDeckDialog());
 
         // Makes the decks in list clickable for the user to click on
@@ -110,7 +113,6 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         });
 
         // Makes study button to take user to study
-        studyButton = findViewById(R.id.studyButton);
         studyButton.setOnClickListener(view -> toStudyPage());
 
         correctButton.setOnClickListener(view -> toCorrect());
@@ -206,6 +208,10 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             wrongButton.setVisibility(View.INVISIBLE);
             percentView.setVisibility(View.INVISIBLE);
             bar.setVisibility(View.INVISIBLE);
+            addButton.setVisibility(View.VISIBLE);
+            addButton.setClickable(true);
+            studyButton.setVisibility(View.VISIBLE);
+            studyButton.setClickable(true);
 
         }
         if(MainActivity.mode == 1){
@@ -213,12 +219,21 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             wrongButton.setVisibility(View.VISIBLE);
             percentView.setVisibility(View.VISIBLE);
             bar.setVisibility(View.VISIBLE);
+            addButton.setVisibility(View.VISIBLE);
+            addButton.setClickable(true);
+            studyButton.setVisibility(View.VISIBLE);
+            studyButton.setClickable(true);
         }
         if(MainActivity.mode == 5){
             correctButton.setVisibility(View.INVISIBLE);
             wrongButton.setVisibility(View.INVISIBLE);
             percentView.setVisibility(View.INVISIBLE);
             bar.setVisibility(View.INVISIBLE);
+            addButton.setVisibility(View.INVISIBLE);
+            addButton.setClickable(false);
+            studyButton.setVisibility(View.INVISIBLE);
+            studyButton.setClickable(false);
+
         }
     }
 
