@@ -1,9 +1,17 @@
 package com.example.testingflashy;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 
 import android.widget.ArrayAdapter;
@@ -25,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity implements AddDialog.AddDialogListener, SettingDialog.SettingDialogListener {
 
     // Study MODE
@@ -32,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // 1 = daily correct incorrect pile
     // 2 = ?????????
     // 5 = archive mode
-    public static int mode = 0;
-    public static int beforeArch = 0;
+    public static int mode = 1;
+    public static int beforeArch = 1;
 
     // All these variables are used to make the list view work properly
     private ListView homeL;
@@ -100,6 +109,28 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
             openTestPage();
         });
 
+        // notification builder
+       if(mode == 1){
+           String noteMessage = "";
+           for(String s: userNames){
+               noteMessage = noteMessage + s + ", ";
+           }
+
+           if(VERSION.SDK_INT >= Build.VERSION_CODES.O){
+               NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+               NotificationManager manager = getSystemService(NotificationManager.class);
+               manager.createNotificationChannel(channel);
+           }
+
+           NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
+           builder.setContentTitle("Test to Study Today: ");
+           builder.setContentText(noteMessage);
+           builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+           builder.setAutoCancel(true);
+
+           NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+           managerCompat.notify(1, builder.build());
+       }
     }
 
     // Makes it so that the user can call the dialog box class to show up
@@ -207,5 +238,4 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
         pastTests.add(new Test("Chem Test", "01/22/22", "8:00am"));
     }
-
 }
