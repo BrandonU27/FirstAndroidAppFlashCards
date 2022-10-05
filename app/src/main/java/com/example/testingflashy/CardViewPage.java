@@ -28,8 +28,8 @@ public class CardViewPage extends AppCompatActivity {
         String answer = currentQuestion.getAnswer();
 
         // sets the texts of the front and back
-        frontCard.setText(question);
-        backCard.setText(answer);
+        frontCard.setText("Question: \n" + question);
+        backCard.setText("Answer: \n" + answer);
     }
 
     @Override

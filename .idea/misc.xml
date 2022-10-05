@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/drawable/cardback_view.xml" value="0.2565" />
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/drawable/cardfront_view.xml" value="0.2565" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/drawable/textviewbackground.xml" value="0.1" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_adding_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_archive_page.xml" value="0.36666666666666664" />
@@ -10,7 +12,7 @@
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_correct_wrong_deck.xml" value="0.33" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_correct_wrong_study.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_deck_page.xml" value="0.33" />
-        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_main.xml" value="0.5123056994818653" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_question_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_study_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lolca/AndroidStudioProjects/TestingFlashy/app/src/main/res/layout/activity_test_page.xml" value="0.33" />

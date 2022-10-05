@@ -1,24 +1,22 @@
 package com.example.testingflashy;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
@@ -111,9 +109,9 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
         // notification builder
        if(mode == 1){
-           String noteMessage = "";
+           StringBuilder noteMessage = new StringBuilder();
            for(String s: userNames){
-               noteMessage = noteMessage + s + ", ";
+               noteMessage.append(s).append(", ");
            }
 
            if(VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
 
            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
            builder.setContentTitle("Test to Study Today: ");
-           builder.setContentText(noteMessage);
+           builder.setContentText(noteMessage.toString());
            builder.setSmallIcon(R.drawable.ic_launcher_foreground);
            builder.setAutoCancel(true);
 

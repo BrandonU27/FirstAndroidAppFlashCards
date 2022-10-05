@@ -3,6 +3,7 @@ package com.example.testingflashy;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -197,7 +198,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     // Gets the progress of the test
     public void getProgress(){
         float point = 100/studyDeck.getCardCount();
-        percentView.setText((float)point * currentTest.getCorrectCards().getCardCount() + "% Done");
+        percentView.setText(point * currentTest.getCorrectCards().getCardCount() + "% Done");
         bar.setProgress((int) point * currentTest.getCorrectCards().getCardCount());
     }
 
@@ -248,6 +249,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Method from add deck dialog that makes a deck to be added into the list
+    @SuppressLint("NewApi")
     @Override
     public void makeDeck(String _title) {
         currentTest.addDeck(new Deck(_title));
