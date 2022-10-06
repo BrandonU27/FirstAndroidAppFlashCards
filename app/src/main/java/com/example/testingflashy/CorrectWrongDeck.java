@@ -1,6 +1,5 @@
 package com.example.testingflashy;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
