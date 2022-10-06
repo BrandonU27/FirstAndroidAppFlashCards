@@ -10,6 +10,10 @@ public class Test implements Serializable{
     private final Deck correctCards;
     private final Deck wrongCards;
 
+    private final Deck Box1;
+    private final Deck Box2;
+    private final Deck Box3;
+
     private final String title;
     private final String date;
     private final String time;
@@ -22,6 +26,10 @@ public class Test implements Serializable{
 
         correctCards = new Deck("Correct Cards");
         wrongCards = new Deck("Wrong Cards");
+
+        Box1 = new Deck("Box1");
+        Box2 = new Deck("Box2");
+        Box3 = new Deck("Box3");
     }
 
     public void addDeck(Deck _deck){
@@ -36,4 +44,7 @@ public class Test implements Serializable{
     public Deck getCorrectCards(){return correctCards;}
     public Deck getWrongCards(){return wrongCards;}
 
+    public Deck getBox1(){return Box1;}
+    public Deck getBox2(){return Box2;}
+    public Deck getBox3(){return Box3;}
 }

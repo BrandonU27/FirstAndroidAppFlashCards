@@ -50,6 +50,7 @@ public class StudyPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_page);
+        getSupportActionBar().hide();
 
         // gets the selected test from last page
         selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");

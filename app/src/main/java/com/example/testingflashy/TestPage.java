@@ -1,10 +1,12 @@
 package com.example.testingflashy;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -50,18 +52,30 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     private Button correctButton;
     private Button wrongButton;
 
+    // Box buttons
+    private Button box1Button;
+    private Button box2Button;
+    private Button box3Button;
+
     // percent view
     public static TextView percentView;
     public static ProgressBar bar;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_page);
+        getSupportActionBar().hide();
 
         // gets the correct and wrong button ids
         correctButton = findViewById(R.id.correctDeckButton);
         wrongButton = findViewById(R.id.wrongDeckButton);
+
+        //Gets the boxes button
+        box1Button = findViewById(R.id.box1Button);
+        box2Button = findViewById(R.id.box2Button);
+        box3Button = findViewById(R.id.box3Button);
 
         // Gets selected test
         selectedTest = (int)getIntent().getSerializableExtra("SELECTEDTEST");
@@ -203,6 +217,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     //Which study
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void whichStudy(){
         if(MainActivity.mode == 0){
             correctButton.setVisibility(View.INVISIBLE);
@@ -213,6 +228,12 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             addButton.setClickable(true);
             studyButton.setVisibility(View.VISIBLE);
             studyButton.setClickable(true);
+            box1Button.setVisibility(View.INVISIBLE);
+            box1Button.setClickable(false);
+            box2Button.setVisibility(View.INVISIBLE);
+            box2Button.setClickable(false);
+            box3Button.setVisibility(View.INVISIBLE);
+            box3Button.setClickable(false);
 
         }
         if(MainActivity.mode == 1){
@@ -224,6 +245,26 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             addButton.setClickable(true);
             studyButton.setVisibility(View.VISIBLE);
             studyButton.setClickable(true);
+            box1Button.setVisibility(View.INVISIBLE);
+            box1Button.setClickable(false);
+            box2Button.setVisibility(View.INVISIBLE);
+            box2Button.setClickable(false);
+            box3Button.setVisibility(View.INVISIBLE);
+            box3Button.setClickable(false);
+        }
+        if(MainActivity.mode == 2){
+            correctButton.setVisibility((View.INVISIBLE));
+            correctButton.setClickable(false);
+            studyButton.setVisibility(View.VISIBLE);
+            studyButton.setClickable(true);
+            wrongButton.setVisibility(View.INVISIBLE);
+            wrongButton.setClickable(false);
+            box1Button.setVisibility(View.VISIBLE);
+            box1Button.setClickable(true);
+            box2Button.setVisibility(View.VISIBLE);
+            box2Button.setClickable(true);
+            box3Button.setVisibility(View.VISIBLE);
+            box3Button.setClickable(true);
         }
         if(MainActivity.mode == 5){
             correctButton.setVisibility(View.INVISIBLE);
@@ -232,6 +273,12 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             bar.setVisibility(View.INVISIBLE);
             addButton.setVisibility(View.INVISIBLE);
             addButton.setClickable(false);
+            box1Button.setVisibility(View.INVISIBLE);
+            box1Button.setClickable(false);
+            box2Button.setVisibility(View.INVISIBLE);
+            box2Button.setClickable(false);
+            box3Button.setVisibility(View.INVISIBLE);
+            box3Button.setClickable(false);
 
         }
     }

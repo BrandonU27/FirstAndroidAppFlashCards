@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     // Study MODE
     // 0 = no study on
     // 1 = daily correct incorrect pile
-    // 2 = ?????????
+    // 2 = Leitner system
     // 5 = archive mode
     public static int mode = 1;
     public static int beforeArch = 1;
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         /*
         Makes the lists that keeps track of the users tests
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
            builder.setContentTitle("Test to Study Today: ");
            builder.setContentText(noteMessage.toString());
-           builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+           builder.setSmallIcon(R.drawable.notif_icon);
            builder.setAutoCancel(true);
 
            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);

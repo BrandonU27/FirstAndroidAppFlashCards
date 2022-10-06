@@ -15,6 +15,7 @@ public class CardViewPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view_page);
+        getSupportActionBar().hide();
 
         // gets the views from layout
         // gets the views for the front of the card and the back

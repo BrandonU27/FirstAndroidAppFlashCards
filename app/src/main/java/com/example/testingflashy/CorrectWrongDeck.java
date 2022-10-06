@@ -1,10 +1,12 @@
 package com.example.testingflashy;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,10 +39,12 @@ public class CorrectWrongDeck extends AppCompatActivity {
 
     private Test currentTest;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correct_wrong_deck);
+        getSupportActionBar().hide();
 
         selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
         currentTest = MainActivity.userTests.get(selectedTest);
@@ -59,6 +63,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
         addcorrectwrongButton.setOnClickListener(view -> toStudy() );
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void toStudy(){
         if(currentTest.getWrongCards().getCardCount() < 3){
             messagePopUp("Sorry but you didn't get enough wrong to study them.\nYou need at least 3.");
