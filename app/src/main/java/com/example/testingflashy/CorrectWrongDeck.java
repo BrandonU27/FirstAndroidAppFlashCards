@@ -89,7 +89,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
         }else{
             Intent intent = new Intent(this, StudyPage.class);
             intent.putExtra("SELECTEDTEST", getIntent().getSerializableExtra("SELECTEDTEST"));
-            intent.putExtra("BOX1DECK", MainActivity.userTests.get(selectedTest).getBox1());
+            intent.putExtra("WRONGDECK", MainActivity.userTests.get(selectedTest).getBox1());
             intent.putExtra("WHICH", "1");
             startActivity(intent);
             finish();
@@ -103,7 +103,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
         }else{
             Intent intent = new Intent(this, StudyPage.class);
             intent.putExtra("SELECTEDTEST", getIntent().getSerializableExtra("SELECTEDTEST"));
-            intent.putExtra("BOX2DECK", MainActivity.userTests.get(selectedTest).getBox2());
+            intent.putExtra("WRONGDECK", MainActivity.userTests.get(selectedTest).getBox2());
             intent.putExtra("WHICH", "2");
             startActivity(intent);
             finish();
@@ -117,7 +117,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
         }else{
             Intent intent = new Intent(this, StudyPage.class);
             intent.putExtra("SELECTEDTEST", getIntent().getSerializableExtra("SELECTEDTEST"));
-            intent.putExtra("BOX3DECK", MainActivity.userTests.get(selectedTest).getBox3());
+            intent.putExtra("WRONGDECK", MainActivity.userTests.get(selectedTest).getBox3());
             intent.putExtra("WHICH", "3");
             startActivity(intent);
             finish();
@@ -163,7 +163,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
             correctwrongCreated.setText("Created On: " + currentTest.getBox2().getCreatedOn());
             correctwrongCount.setText("Cards: " + currentTest.getBox2().getCardCount());
             for(Question q : currentTest.getBox2().getCardDeck()){
-                Box1Names.add(q.getQuestion());
+                Box2Names.add(q.getQuestion());
             }
             addcorrectwrongButton.setOnClickListener(view -> toStudyBoxBox2());
             updateBox2List();
@@ -173,7 +173,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
             correctwrongCreated.setText("Created On: " + currentTest.getBox3().getCreatedOn());
             correctwrongCount.setText("Cards: " + currentTest.getBox3().getCardCount());
             for(Question q : currentTest.getBox3().getCardDeck()){
-                Box1Names.add(q.getQuestion());
+                Box3Names.add(q.getQuestion());
             }
             addcorrectwrongButton.setOnClickListener(view -> toStudyBox3());
             updateBox3List();
@@ -198,7 +198,8 @@ public class CorrectWrongDeck extends AppCompatActivity {
         correctwrongL.setAdapter(adapt);
     }
 
-    public void updateBox2List(){ArrayAdapter<String> adapt;
+    public void updateBox2List(){
+        ArrayAdapter<String> adapt;
         adapt = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Box2Names);
         correctwrongL.setAdapter(adapt);
     }

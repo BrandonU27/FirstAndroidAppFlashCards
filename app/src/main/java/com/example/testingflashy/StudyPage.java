@@ -76,6 +76,27 @@ public class StudyPage extends AppCompatActivity {
                 sessionDeck.addCard(q);
             }
         }
+        if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){
+            Deck copyBox = (Deck) getIntent().getSerializableExtra("WRONGDECK");
+            MainActivity.userTests.get(selectedTest).getBox1().clear();
+            for (Question q : copyBox.getCardDeck()){
+                sessionDeck.addCard(q);
+            }
+        }
+        if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){
+            Deck copyBox = (Deck) getIntent().getSerializableExtra("WRONGDECK");
+            MainActivity.userTests.get(selectedTest).getBox2().clear();
+            for (Question q : copyBox.getCardDeck()){
+                sessionDeck.addCard(q);
+            }
+        }
+        if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){
+            Deck copyBox = (Deck) getIntent().getSerializableExtra("WRONGDECK");
+            MainActivity.userTests.get(selectedTest).getBox3().clear();
+            for(Question q : copyBox.getCardDeck()){
+                sessionDeck.addCard(q);
+            }
+        }
 
         // gets all the views from the layout
         questionView = findViewById(R.id.QuestionView);
@@ -189,9 +210,15 @@ public class StudyPage extends AppCompatActivity {
         if(correctAnswer == 1){
             messagePopUp("You rock that was correct");
             MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox2().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
         }else{
             messagePopUp("Sorry that wasn't it");
             MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
         }
         setPageQuestion();
     }
@@ -202,9 +229,15 @@ public class StudyPage extends AppCompatActivity {
         if(correctAnswer == 2){
             messagePopUp("Correct answer Super Star");
             MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox2().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
         }else{
             messagePopUp("You need to practice a little more on this question");
             MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
         }
         setPageQuestion();
     }
@@ -215,9 +248,15 @@ public class StudyPage extends AppCompatActivity {
         if(correctAnswer == 3){
             messagePopUp("CORRECT amazing");
             MainActivity.userTests.get(selectedTest).getCorrectCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox2().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox3().addCard(currentQuestion);}
         }else{
             messagePopUp("Incorrect study a little more");
             MainActivity.userTests.get(selectedTest).getWrongCards().addCard(currentQuestion);
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "1")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "2")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
+            if(Objects.equals(getIntent().getSerializableExtra("WHICH"), "3")){MainActivity.userTests.get(selectedTest).getBox1().addCard(currentQuestion);}
         }
         setPageQuestion();
     }
