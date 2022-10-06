@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArchivePage">
+    tools:context=".ArchivePage"
+    android:background="@drawable/archive_page_background">
 
     <TextView
         android:id="@+id/archiveView"

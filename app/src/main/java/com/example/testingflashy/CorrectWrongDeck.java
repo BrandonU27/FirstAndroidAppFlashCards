@@ -1,9 +1,5 @@
 package com.example.testingflashy;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -14,10 +10,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +45,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correct_wrong_deck);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         selectedTest = (int) getIntent().getSerializableExtra("SELECTEDTEST");
         currentTest = MainActivity.userTests.get(selectedTest);
@@ -217,12 +215,7 @@ public class CorrectWrongDeck extends AppCompatActivity {
         builder.setTitle("Results");
         builder.setMessage(_message);
 
-        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("ok", (dialogInterface, i) -> dialogInterface.cancel());
         builder.show();
     }
 
