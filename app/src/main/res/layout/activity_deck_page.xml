@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/deck_page_background"
     tools:context=".DeckPage">
 
     <TextView
@@ -46,12 +47,13 @@
         app:layout_constraintTop_toBottomOf="@+id/deckName"
         app:layout_constraintVertical_bias="0.082" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addCardButton"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Add Card"
         android:textSize="25dp"
+        android:background="@drawable/mybutton"
         app:layout_constraintBottom_toTopOf="@+id/deckPageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

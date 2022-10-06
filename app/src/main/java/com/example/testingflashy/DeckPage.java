@@ -1,8 +1,10 @@
 package com.example.testingflashy;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -118,6 +120,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
 
     // this is a method that lets the user make a card based on what they entered in the popup
     // then this will add a card to some decks used in the program
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void makeCard(String _question, String _answer) {
         currentDeck.addCard(new Question(_question, _answer));
@@ -125,6 +128,8 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         MainActivity.userTests.get(selectedTest)
                 .getDeckList().get(selectedDeck)
                 .addCard(new Question(_question,_answer));
+        MainActivity.userTests.get(selectedTest)
+                        .getBox1().addCard(new Question(_question, _answer));
         TestPage.testsDecks.get(selectedDeck)
                 .addCard(new Question(_question, _answer));
         cardList = currentDeck.getCardDeck();

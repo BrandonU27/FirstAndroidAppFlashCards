@@ -32,9 +32,11 @@ public class Test implements Serializable{
         Box3 = new Deck("Box3");
     }
 
-    public void addDeck(Deck _deck){
-        deckList.add(_deck);
-    }
+    public void addDeck(Deck _deck){deckList.add(_deck);}
+
+    public void addBox(Question q){getBox1().addCard(q);}
+    public void addBox2(Question q){getBox2().addCard(q);}
+    public void addBox3(Question q){getBox3().addCard(q);}
 
     public String getTitle(){return title;}
     public String getDate(){return date;}

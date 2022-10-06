@@ -1,11 +1,13 @@
 package com.example.testingflashy;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,6 +48,7 @@ public class StudyPage extends AppCompatActivity {
     // gets the current selected test
     private int selectedTest;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +105,7 @@ public class StudyPage extends AppCompatActivity {
     }
 
     // Method to set the page up for the current question
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setPageQuestion(){
         // Used in setting the wrong answers
         String tempWrong = wronganswerAdd();
@@ -165,6 +169,7 @@ public class StudyPage extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void updatePercentage(){
         float point = 100/ TestPage.studyDeck.getCardCount();
         TestPage.percentView.setText((float) point * MainActivity.userTests.get(selectedTest).getCorrectCards().getCardCount() + "% Done");
@@ -179,6 +184,7 @@ public class StudyPage extends AppCompatActivity {
     }
 
     // checks if this is the answer button
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void checkAnswer1(){
         if(correctAnswer == 1){
             messagePopUp("You rock that was correct");
@@ -191,6 +197,7 @@ public class StudyPage extends AppCompatActivity {
     }
 
     // checks if this is the answer button
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void checkAnswer2(){
         if(correctAnswer == 2){
             messagePopUp("Correct answer Super Star");
@@ -203,6 +210,7 @@ public class StudyPage extends AppCompatActivity {
     }
 
     // checks if this is the answer button
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void checkAnswer3(){
         if(correctAnswer == 3){
             messagePopUp("CORRECT amazing");

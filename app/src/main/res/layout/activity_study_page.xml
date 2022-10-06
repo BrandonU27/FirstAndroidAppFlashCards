@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/study_page_background"
     tools:context=".StudyPage">
 
     <TextView
@@ -16,6 +17,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
@@ -23,11 +25,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.242" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option1Button"
         android:layout_width="347dp"
         android:layout_height="60dp"
         android:text="Button"
+        android:background="@drawable/mybutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
@@ -35,11 +38,12 @@
         app:layout_constraintTop_toBottomOf="@+id/QuestionView"
         app:layout_constraintVertical_bias="0.115" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option2Button"
         android:layout_width="347dp"
         android:layout_height="60dp"
         android:text="Button"
+        android:background="@drawable/mybutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
@@ -47,11 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/option1Button"
         app:layout_constraintVertical_bias="0.173" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option3Button"
         android:layout_width="351dp"
         android:layout_height="60dp"
         android:text="Button"
+        android:background="@drawable/mybutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

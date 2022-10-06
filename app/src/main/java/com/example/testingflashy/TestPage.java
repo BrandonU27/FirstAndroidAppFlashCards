@@ -132,7 +132,35 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
 
         correctButton.setOnClickListener(view -> toCorrect());
         wrongButton.setOnClickListener(view -> toWrong());
+
+        // Makes box button take the user to a box deck view
+        box1Button.setOnClickListener(view -> toBox());
+        box2Button.setOnClickListener(view -> toBox2());
+        box3Button.setOnClickListener(view -> toBox3());
     }
+
+    // to box deck page
+    public void toBox(){
+        Intent intent = new Intent(this, CorrectWrongDeck.class);
+        intent.putExtra("WHICH", "1");
+        intent.putExtra("SELECTEDTEST", selectedTest);
+        startActivity(intent);
+    }
+
+    public void toBox2(){
+        Intent intent = new Intent(this, CorrectWrongDeck.class);
+        intent.putExtra("WHICH", "2");
+        intent.putExtra("SELECTEDTEST", selectedTest);
+        startActivity(intent);
+    }
+
+    public void toBox3(){
+        Intent intent = new Intent(this, CorrectWrongDeck.class);
+        intent.putExtra("WHICH", "3");
+        intent.putExtra("SELECTEDTEST", selectedTest);
+        startActivity(intent);
+    }
+
     // To correct deck page
     public void toCorrect(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
@@ -265,6 +293,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             box2Button.setClickable(true);
             box3Button.setVisibility(View.VISIBLE);
             box3Button.setClickable(true);
+            percentView.setVisibility(View.INVISIBLE);
+            bar.setVisibility(View.INVISIBLE);
         }
         if(MainActivity.mode == 5){
             correctButton.setVisibility(View.INVISIBLE);
