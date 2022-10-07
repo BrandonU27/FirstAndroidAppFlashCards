@@ -23,6 +23,8 @@ import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +35,10 @@ import java.util.Objects;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity implements AddDialog.AddDialogListener, SettingDialog.SettingDialogListener {
+
+    // All of my firebase data information
+
+
 
     // Study MODE
     // 0 = no study on

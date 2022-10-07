@@ -42,6 +42,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.976" />
+
+        <ImageButton
+            android:id="@+id/informationButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/information_button_icon"/>
+
         <TextView
             android:id="@+id/testName"
             android:layout_width="wrap_content"

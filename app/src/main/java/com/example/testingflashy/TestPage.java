@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.example.testingflashy.TestClasses.Deck;
 import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDeckDialog;
+import com.example.testingflashy.dialogclasses.InforDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +64,18 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     public static TextView percentView;
     public static ProgressBar bar;
 
+    // Button for the information button
+    private ImageButton inforButton;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_page);
         getSupportActionBar().hide();
+
+        // gets the information ids
+        inforButton = findViewById(R.id.informationButton);
 
         // gets the correct and wrong button ids
         correctButton = findViewById(R.id.correctDeckButton);
@@ -137,6 +146,14 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         box1Button.setOnClickListener(view -> toBox());
         box2Button.setOnClickListener(view -> toBox2());
         box3Button.setOnClickListener(view -> toBox3());
+
+        // Information button to tell the student what its about
+        inforButton.setOnClickListener(view -> infoDialog());
+    }
+
+    public void infoDialog(){
+        InforDialog inforDialog = new InforDialog();
+        inforDialog.show(getSupportFragmentManager(), "information");
     }
 
     // to box deck page
@@ -262,7 +279,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             box2Button.setClickable(false);
             box3Button.setVisibility(View.INVISIBLE);
             box3Button.setClickable(false);
-
+            inforButton.setVisibility(View.INVISIBLE);
+            inforButton.setClickable(false);
         }
         if(MainActivity.mode == 1){
             correctButton.setVisibility(View.VISIBLE);
@@ -279,6 +297,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             box2Button.setClickable(false);
             box3Button.setVisibility(View.INVISIBLE);
             box3Button.setClickable(false);
+            inforButton.setVisibility(View.INVISIBLE);
+            inforButton.setClickable(false);
         }
         if(MainActivity.mode == 2){
             correctButton.setVisibility((View.INVISIBLE));
@@ -295,6 +315,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             box3Button.setClickable(true);
             percentView.setVisibility(View.INVISIBLE);
             bar.setVisibility(View.INVISIBLE);
+            inforButton.setVisibility(View.VISIBLE);
+            inforButton.setClickable(true);
         }
         if(MainActivity.mode == 5){
             correctButton.setVisibility(View.INVISIBLE);
@@ -309,7 +331,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             box2Button.setClickable(false);
             box3Button.setVisibility(View.INVISIBLE);
             box3Button.setClickable(false);
-
+            inforButton.setVisibility(View.INVISIBLE);
+            inforButton.setClickable(false);
         }
     }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="For the purpose of this example, we will use three study boxeslabeled as follows:\n-Box 1 : every day\n-Box 2: every other day\n-Box 3: once a week\n Everyflashcard will start in Box 1. As you answer a flashcard correctly, the card will move intoBox 2. If you incorrectly answer a flashcard, the card will move back in Box 1. This will playfor every flashcard in Box 1. At the end of this round, you will notice that some concepts remain in Box 1 - that means that these concepts are more difficult for you and require frequent studying. The cards that have graduated to Box 2, on the other hand, are conceptswith which you are more familiare, so you do not have to study them as frequently.\n Each time you get a card correct, it will move to the next box. Each time you get a card wrong,it will be put back in Box 1. Once you have finished studying for the day, you will see which concepts are ones that you need to study more frequently, and which concepts may only require you to study them once a week.\n The study will be complete once you get all the cards to the final box."/>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "175171583819",
+    "project_id": "testingflashy",
+    "storage_bucket": "testingflashy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175171583819:android:08ae47da28cc097af5f2ce",
+        "android_client_info": {
+          "package_name": "com.example.testingflashy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175171583819-53sd8f8o7p9qm9274ckn0ihotem6831v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9m5WSV5IB9OwuF1MoNU3VzK6gHsAyvmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175171583819-53sd8f8o7p9qm9274ckn0ihotem6831v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
