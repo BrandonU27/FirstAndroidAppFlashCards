@@ -41,7 +41,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deck_page);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // Gets the numbers passed in
         selectedTest = (int)getIntent().getSerializableExtra("SELECTEDTEST");
@@ -141,6 +141,7 @@ public class DeckPage extends AppCompatActivity implements AddCardDialog.AddCard
         SetTitles();
     }
 
+    // ends the page when the user clicks the back button
     @Override
     public void onBackPressed() {
         super.onBackPressed();

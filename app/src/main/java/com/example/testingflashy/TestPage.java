@@ -136,9 +136,8 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
             toDeckPage();
         });
 
-        // Makes study button to take user to study
+        // Makes study button to take user to study also the correct and wrong buttons
         studyButton.setOnClickListener(view -> toStudyPage());
-
         correctButton.setOnClickListener(view -> toCorrect());
         wrongButton.setOnClickListener(view -> toWrong());
 
@@ -151,12 +150,14 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         inforButton.setOnClickListener(view -> infoDialog());
     }
 
+    // Opens up a dialog box that only shows on study method number 2
+    // this uses a dialog box that tells the user how to study with the leither method
     public void infoDialog(){
         InforDialog inforDialog = new InforDialog();
         inforDialog.show(getSupportFragmentManager(), "information");
     }
 
-    // to box deck page
+    // Takes the user to the box 1 card deck
     public void toBox(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
         intent.putExtra("WHICH", "1");
@@ -164,6 +165,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         startActivity(intent);
     }
 
+    // Takes the user to the box 2 card deck
     public void toBox2(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
         intent.putExtra("WHICH", "2");
@@ -171,6 +173,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         startActivity(intent);
     }
 
+    // Takes the user to the box 3 card deck
     public void toBox3(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
         intent.putExtra("WHICH", "3");
@@ -179,6 +182,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // To correct deck page
+    // shows all the cards that the user got correct
     public void toCorrect(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
         intent.putExtra("WHICH", "Correct");
@@ -187,6 +191,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // to wrong deck page
+    // shows all the cards that the suers got wrong
     public void toWrong(){
         Intent intent = new Intent(this, CorrectWrongDeck.class);
         intent.putExtra("WHICH", "Wrong");
@@ -195,6 +200,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Sends the user to the deck page
+    // also sends information to the next page (selected test number, and the selected deck number)
     public void toDeckPage(){
         Intent in = new Intent(this, DeckPage.class);
         for (Deck d: currentTest.getDeckList()){
@@ -210,6 +216,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Takes to study page
+    // takes all the cards and takes it to a test layout for the user to learn each card
     public void toStudyPage(){
         if(studyDeck.getCardCount() < 3){
             messagePopUp("Sorry you need more then 3 cards to go into study mode.\nTry adding more cards.");
@@ -223,6 +230,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Calls the add deck dialog to open
+    // uses custom layout that I made
     public void openAddDeckDialog(){
         AddDeckDialog addDeckDialog = new AddDeckDialog();
         addDeckDialog.show(getSupportFragmentManager(), "add deck");
@@ -236,6 +244,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Create page titles
+    // title of the test, time it was made with the progress percent and the progress bar
     public void createTitle() {
         TextView titleView = findViewById(R.id.testName);
         titleView.setText(currentTest.getTitle());
@@ -255,6 +264,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     // Gets the progress of the test
+    // gets the amount of cards total and compares to the correct cards
     public void getProgress(){
         float point = 100/studyDeck.getCardCount();
         percentView.setText(point * currentTest.getCorrectCards().getCardCount() + "% Done");
@@ -262,6 +272,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
     }
 
     //Which study
+    // sets the page up to which thing the user selected
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void whichStudy(){
         if(MainActivity.mode == 0){
@@ -363,6 +374,7 @@ public class TestPage extends AppCompatActivity implements  AddDeckDialog.AddDec
         updateList();
     }
 
+    // ends the page when the user presses back
     @Override
     public void onBackPressed() {
         super.onBackPressed();

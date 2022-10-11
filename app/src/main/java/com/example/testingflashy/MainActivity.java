@@ -23,8 +23,6 @@ import com.example.testingflashy.TestClasses.Question;
 import com.example.testingflashy.TestClasses.Test;
 import com.example.testingflashy.dialogclasses.AddDialog;
 import com.example.testingflashy.dialogclasses.SettingDialog;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         /*
         Makes the lists that keeps track of the users tests
@@ -115,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         });
 
         // notification builder
+        // sends the user a notification on which test are needed to be studied for the day
        if(mode == 1){
            StringBuilder noteMessage = new StringBuilder();
            for(String s: userNames){
@@ -139,12 +138,14 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     }
 
     // Makes it so that the user can call the dialog box class to show up
+    // uses a custom layout that I have made for the dialog box
     public void addTestDialog(){
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "add dialog");
     }
 
     // Method that gets all the information from the dialog box and makes a test to apply it
+    // overrides the method tha is in the add test dialog
     @Override
     public void makeTest(String _title, String _date, String _time){
         userTests.add(new Test(_title,_date,_time));
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     }
 
     // Method for when the user clicks on the selected test it opens up to the test's page
+    // it also passes on the data of which test it clicked and sends which get number it is
     public void openTestPage(){
         Intent intent = new Intent(this, TestPage.class);
         for (Test t : userTests){
@@ -168,6 +170,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     }
 
     // opens the page with past tests
+    // this only lets the user click if there are 3 tests that are passed
+    // also sets the program to a custom mode so that the test page appears different for them
     public void toArchivePage(){
         if(pastTests.size() == 0){
             messagePopUp("You currently have no tests that pasted.\nAs time goes by you'll start to fill this page up.");
@@ -188,6 +192,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     }
 
     // Opens the settings button
+    // uses the custom settings dialog that I have made
     public void toSettingPage(){
         SettingDialog settingDialog = new SettingDialog();
         settingDialog.show(getSupportFragmentManager(), "setting dialog");
@@ -206,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
     }
 
     // method to update the study mode based on the users dialog choice
+    // this is used with the settings dialog
     @Override
     public void studyChange(Boolean _op1, Boolean _op2, Boolean _op3) {
         if(_op1){
@@ -219,6 +225,8 @@ public class MainActivity extends AppCompatActivity implements AddDialog.AddDial
         }
     }
 
+
+    // sample data used to test NOT IMPORTANT WILL DELETE ON RELEASE
     public void sampleData(){
         userTests.add(new Test("EXAMPLE TEST", "02/21/23", "5:00am"));
         userTests.get(0).addDeck(new Deck("SAMPLE DECK"));

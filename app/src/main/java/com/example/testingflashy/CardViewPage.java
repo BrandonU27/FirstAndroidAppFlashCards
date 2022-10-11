@@ -7,15 +7,18 @@ import android.widget.TextView;
 
 import com.example.testingflashy.TestClasses.Question;
 
+import java.util.Objects;
+
 public class CardViewPage extends AppCompatActivity {
 
+    // var for the current test
     Question currentQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view_page);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // gets the views from layout
         // gets the views for the front of the card and the back
@@ -33,6 +36,8 @@ public class CardViewPage extends AppCompatActivity {
         backCard.setText("Answer: \n" + answer);
     }
 
+
+    // ends the page when the user clicks on the back button
     @Override
     public void onBackPressed() {
         super.onBackPressed();

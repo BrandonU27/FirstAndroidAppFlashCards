@@ -273,6 +273,7 @@ public class StudyPage extends AppCompatActivity {
         builder.show();
     }
 
+    // ends the page when the user presses back
     @Override
     public void onBackPressed() {
         super.onBackPressed();
