@@ -7,221 +7,204 @@
     android:background="@drawable/test_page_background"
     tools:context=".TestPage">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/percentTestView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0% Done"
-            android:textAlignment="center"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/testName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.291" />
+    <TextView
+        android:id="@+id/percentTestView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="0% Done"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/testName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="380dp"
-            android:layout_height="14dp"
-            android:max="100"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/testName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976" />
+    <TextView
+        android:id="@+id/testName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Sample Title"
+        android:textAlignment="center"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
 
-        <ImageButton
-            android:id="@+id/informationButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/information_button_icon"/>
+    <TextView
+        android:id="@+id/testDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xx/xx/xxxx"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/testTime"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167" />
 
-        <TextView
-            android:id="@+id/testName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Sample Title"
-            android:textAlignment="center"
-            android:textSize="48dp"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.086" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="380dp"
+        android:layout_height="14dp"
+        android:layout_gravity="center"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/testName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="10dp"
-            android:paddingEnd="40dp">
-            <TextView
-                android:id="@+id/testDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:text="xx/xx/xxxx"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/divider2"
-                app:layout_constraintEnd_toStartOf="@+id/testTime"
-                app:layout_constraintHorizontal_bias="0.178"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/testName"
-                app:layout_constraintVertical_bias="0.214" />
+    <ImageButton
+        android:id="@+id/informationButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/information_button_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-            </Space>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addDeckButton"
+        android:layout_width="369dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/mybutton"
+        android:text="Add Deck"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/testPageList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741" />
 
-            <TextView
-                android:id="@+id/testTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="x:xx pm"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/divider2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.818"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/testName"
-                app:layout_constraintVertical_bias="0.214" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/testTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x:xx pm"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167" />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:paddingStart="40dp"
-           android:paddingEnd="40dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/studyButton"
+        android:layout_width="369dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:background="@drawable/mybutton"
+        android:text="Study"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/testPageList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDeckButton"
+        app:layout_constraintVertical_bias="0.29" />
 
-           <androidx.appcompat.widget.AppCompatButton
-               android:id="@+id/addDeckButton"
-               android:layout_width="140dp"
-               android:layout_height="50dp"
-               android:text="Add Deck"
-               android:textSize="20sp"
-               android:background="@drawable/mybutton"
-               android:layout_gravity="center"
-               app:layout_constraintBottom_toTopOf="@+id/divider2"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintHorizontal_bias="0.855"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/testName"
-               app:layout_constraintVertical_bias="0.906" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/box1Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Box 1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/box2Button"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testPageList" />
 
-           <Space
-               android:layout_width="wrap_content"
-               android:layout_height="1dp"
-               android:layout_weight="1">
-           </Space>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/correctDeckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Correct"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testPageList" />
 
-           <androidx.appcompat.widget.AppCompatButton
-               android:id="@+id/studyButton"
-               android:layout_width="140dp"
-               android:layout_height="50dp"
-               android:text="Study"
-               android:textSize="20sp"
-               android:background="@drawable/mybutton"
-               android:layout_gravity="center"
-               app:layout_constraintBottom_toTopOf="@+id/divider2"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintHorizontal_bias="0.17"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintVertical_bias="0.97" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/box2Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Box 2"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/box3Button"
+        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testPageList"
+        app:layout_constraintVertical_bias="0.51" />
 
-       </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wrongDeckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Wrong"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="@+id/box2Button"
+        app:layout_constraintTop_toBottomOf="@+id/testPageList" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/box3Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mybutton"
+        android:text="Box 3"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testPageList"
+        app:layout_constraintVertical_bias="0.0" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/box1Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Box 1"
-                android:textSize="20dp"
-                android:background="@drawable/mybutton"/>
+    <ListView
+        android:id="@+id/testPageList"
+        android:layout_width="410dp"
+        android:layout_height="383dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/correctDeckButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Correct"
-                android:background="@drawable/mybutton"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/box2Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Box 2"
-                android:textSize="20dp"
-                android:background="@drawable/mybutton"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/wrongDeckButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Wrong"
-                android:background="@drawable/mybutton"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/box3Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Box 3"
-                android:textSize="20dp"
-                android:background="@drawable/mybutton"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-        </Space>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="409dp"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/testName"
-            app:layout_constraintVertical_bias="0.237" />
-
-        <ListView
-            android:id="@+id/testPageList"
-            android:layout_width="match_parent"
-            android:layout_height="458dp"
-            app:layout_constraintBottom_toTopOf="@+id/wrongDeckButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
-            app:layout_constraintVertical_bias="0.0" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
