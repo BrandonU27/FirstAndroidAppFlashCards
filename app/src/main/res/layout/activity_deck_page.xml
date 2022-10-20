@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/deck_page_background"
+    android:background="#E6E6FA"
     tools:context=".DeckPage">
 
     <TextView
@@ -14,6 +14,7 @@
         android:text="SAMPLE NAME"
         android:textSize="32dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -28,6 +29,7 @@
         android:text="CREATED ON:"
         android:textStyle="bold"
         android:textSize="25dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/deckCardCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,6 +45,7 @@
         android:text="Cards: "
         android:textStyle="bold"
         android:textSize="25dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -57,6 +60,7 @@
         android:background="@drawable/mybutton"
         android:text="Add Card"
         android:textSize="25dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/deckPageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
